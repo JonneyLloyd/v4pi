@@ -1,0 +1,3 @@
+/home/pi/FYP/build/CMakeFiles/edit_cache.dir
+/home/pi/FYP/build/CMakeFiles/rebuild_cache.dir
+/home/pi/FYP/build/CMakeFiles/openALPR_test.dir
