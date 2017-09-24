@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11   CMakeFiles/openALPR_test.dir/Sources/alpr_jpeg.cpp.o CMakeFiles/openALPR_test.dir/Sources/camera_grab.cpp.o CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.o CMakeFiles/openALPR_test.dir/main.cpp.o  -o openALPR_test -rdynamic /home/pi/openalpr/src/build/openalpr/libopenalpr.so -Wl,-rpath,/home/pi/openalpr/src/build/openalpr 
