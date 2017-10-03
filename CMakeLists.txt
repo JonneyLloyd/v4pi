@@ -4,8 +4,6 @@ project(openALPR_test)
 SET(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 find_package( OpenCV REQUIRED )
-#add_executable( DisplayImage DisplayImage.cpp )
-#target_link_libraries( DisplayImage ${OpenCV_LIBS} )
 
 SET(OPENALPR_LIB /home/pi/openalpr/src/build/openalpr/libopenalpr.so)
 SET(OPENALPR_TEST openALPR_test)
@@ -16,4 +14,4 @@ file(GLOB SOURCES
 )
 add_executable(${OPENALPR_TEST} ${SOURCES} main.cpp)
 
-target_link_libraries(openALPR_test ${OPENALPR_LIB})
+target_link_libraries(openALPR_test ${OPENALPR_LIB} ${OpenCV_LIBS} )

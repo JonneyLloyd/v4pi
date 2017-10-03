@@ -12,7 +12,7 @@ int AlprJpeg::run()
 
     // Optionally, you can provide the library with a region for pattern matching. This improves accuracy by
     // comparing the plate text with the regional pattern.
-    // openalpr.setDefaultRegion("md");
+     openalpr.setDefaultRegion("ie");
 
     // Make sure the library loads before continuing.
     // For example, it could fail if the config/runtime_data is not found.
@@ -27,6 +27,7 @@ int AlprJpeg::run()
 
     // Carefully observe the results. There may be multiple plates in an image,
     // and each plate returns the top N candidates.
+    std::cout << "Reading image" << std::endl;
     for (int i = 0; i < results.plates.size(); i++)
     {
       alpr::AlprPlateResult plate = results.plates[i];

@@ -204,6 +204,33 @@ Sources/launcher.cpp.s:
 	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.s
 .PHONY : Sources/launcher.cpp.s
 
+Sources/v4l2_jpeg.o: Sources/v4l2_jpeg.cpp.o
+
+.PHONY : Sources/v4l2_jpeg.o
+
+# target to build an object file
+Sources/v4l2_jpeg.cpp.o:
+	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.o
+.PHONY : Sources/v4l2_jpeg.cpp.o
+
+Sources/v4l2_jpeg.i: Sources/v4l2_jpeg.cpp.i
+
+.PHONY : Sources/v4l2_jpeg.i
+
+# target to preprocess a source file
+Sources/v4l2_jpeg.cpp.i:
+	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.i
+.PHONY : Sources/v4l2_jpeg.cpp.i
+
+Sources/v4l2_jpeg.s: Sources/v4l2_jpeg.cpp.s
+
+.PHONY : Sources/v4l2_jpeg.s
+
+# target to generate assembly for a file
+Sources/v4l2_jpeg.cpp.s:
+	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.s
+.PHONY : Sources/v4l2_jpeg.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -249,6 +276,9 @@ help:
 	@echo "... Sources/launcher.o"
 	@echo "... Sources/launcher.i"
 	@echo "... Sources/launcher.s"
+	@echo "... Sources/v4l2_jpeg.o"
+	@echo "... Sources/v4l2_jpeg.i"
+	@echo "... Sources/v4l2_jpeg.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

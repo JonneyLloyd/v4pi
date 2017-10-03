@@ -13,10 +13,16 @@ alpr_jpeg.h
 /home/pi/FYP/Sources/camera_grab.cpp
 camera_grab.h
 /home/pi/FYP/Sources/camera_grab.h
+v4l2_factory.h
+/home/pi/FYP/Sources/v4l2_factory.h
 
 /home/pi/FYP/Sources/launcher.cpp
 launcher.h
 /home/pi/FYP/Sources/launcher.h
+
+/home/pi/FYP/Sources/v4l2_jpeg.cpp
+v4l2_jpeg.h
+/home/pi/FYP/Sources/v4l2_jpeg.h
 
 /home/pi/FYP/main.cpp
 launcher.h
@@ -47,8 +53,34 @@ unistd.h
 -
 
 Headers/launcher.h
-camera_grab.h
-Headers/camera_grab.h
+v4l2_jpeg.h
+Headers/v4l2_jpeg.h
 alpr_jpeg.h
 Headers/alpr_jpeg.h
+
+Headers/v4l2_factory.h
+string.h
+-
+string
+-
+linux/videodev2.h
+-
+sys/ioctl.h
+-
+errno.h
+-
+sys/mman.h
+-
+stdio.h
+-
+stdlib.h
+-
+fcntl.h
+-
+unistd.h
+-
+
+Headers/v4l2_jpeg.h
+v4l2_factory.h
+Headers/v4l2_factory.h
 

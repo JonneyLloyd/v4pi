@@ -1,5 +1,6 @@
 
 #include "camera_grab.h"
+#include "v4l2_factory.h"
 
 int CameraGrab::run()
 {

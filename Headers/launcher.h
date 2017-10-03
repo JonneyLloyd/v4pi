@@ -1,7 +1,7 @@
 #ifndef LAUNCHER_H
 #define LAUNCHER_H
 
-#include "camera_grab.h"
+#include "v4l2_jpeg.h"
 #include "alpr_jpeg.h"
 
 class Launcher
@@ -11,7 +11,7 @@ public:
     int alpr_test();
 
 private:
-    CameraGrab cameraGrab;
+    V4l2_Jpeg * jpeg_test;
     AlprJpeg alprJpeg;
 };
 

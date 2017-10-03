@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pi/FYP/Sources/alpr_jpeg.cpp" "/home/pi/FYP/CMakeFiles/openALPR_test.dir/Sources/alpr_jpeg.cpp.o"
   "/home/pi/FYP/Sources/camera_grab.cpp" "/home/pi/FYP/CMakeFiles/openALPR_test.dir/Sources/camera_grab.cpp.o"
   "/home/pi/FYP/Sources/launcher.cpp" "/home/pi/FYP/CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.o"
+  "/home/pi/FYP/Sources/v4l2_jpeg.cpp" "/home/pi/FYP/CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.o"
   "/home/pi/FYP/main.cpp" "/home/pi/FYP/CMakeFiles/openALPR_test.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

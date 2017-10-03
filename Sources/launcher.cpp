@@ -5,7 +5,8 @@
 
 int Launcher::cam_test()
 {
-    return cameraGrab.run();
+    jpeg_test = new V4l2_Jpeg("/dev/video0", 800, 600);
+    return jpeg_test->run();
 }
 
 int Launcher::alpr_test()
