@@ -98,8 +98,7 @@ int V4l2_Jpeg::run()
         }
 
         memset(buffer_start, 0, bufferinfo.length);
-
-
+        
         // Put the buffer in the incoming queue.
         if(ioctl(fd, VIDIOC_QBUF, &bufferinfo) < 0){
             perror("VIDIOC_QBUF");

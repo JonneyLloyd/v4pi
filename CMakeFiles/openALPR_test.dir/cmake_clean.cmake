@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/openALPR_test.dir/Sources/alpr_jpeg.cpp.o"
-  "CMakeFiles/openALPR_test.dir/Sources/camera_grab.cpp.o"
   "CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.o"
   "CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.o"
   "CMakeFiles/openALPR_test.dir/main.cpp.o"

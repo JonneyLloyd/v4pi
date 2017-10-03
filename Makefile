@@ -150,33 +150,6 @@ Sources/alpr_jpeg.cpp.s:
 	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/alpr_jpeg.cpp.s
 .PHONY : Sources/alpr_jpeg.cpp.s
 
-Sources/camera_grab.o: Sources/camera_grab.cpp.o
-
-.PHONY : Sources/camera_grab.o
-
-# target to build an object file
-Sources/camera_grab.cpp.o:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/camera_grab.cpp.o
-.PHONY : Sources/camera_grab.cpp.o
-
-Sources/camera_grab.i: Sources/camera_grab.cpp.i
-
-.PHONY : Sources/camera_grab.i
-
-# target to preprocess a source file
-Sources/camera_grab.cpp.i:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/camera_grab.cpp.i
-.PHONY : Sources/camera_grab.cpp.i
-
-Sources/camera_grab.s: Sources/camera_grab.cpp.s
-
-.PHONY : Sources/camera_grab.s
-
-# target to generate assembly for a file
-Sources/camera_grab.cpp.s:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/camera_grab.cpp.s
-.PHONY : Sources/camera_grab.cpp.s
-
 Sources/launcher.o: Sources/launcher.cpp.o
 
 .PHONY : Sources/launcher.o
@@ -270,9 +243,6 @@ help:
 	@echo "... Sources/alpr_jpeg.o"
 	@echo "... Sources/alpr_jpeg.i"
 	@echo "... Sources/alpr_jpeg.s"
-	@echo "... Sources/camera_grab.o"
-	@echo "... Sources/camera_grab.i"
-	@echo "... Sources/camera_grab.s"
 	@echo "... Sources/launcher.o"
 	@echo "... Sources/launcher.i"
 	@echo "... Sources/launcher.s"

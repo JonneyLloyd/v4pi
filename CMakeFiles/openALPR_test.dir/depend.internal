@@ -4,10 +4,6 @@
 CMakeFiles/openALPR_test.dir/Sources/alpr_jpeg.cpp.o
  /home/pi/FYP/Sources/alpr_jpeg.cpp
  Headers/alpr_jpeg.h
-CMakeFiles/openALPR_test.dir/Sources/camera_grab.cpp.o
- /home/pi/FYP/Sources/camera_grab.cpp
- Headers/camera_grab.h
- Headers/v4l2_factory.h
 CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.o
  /home/pi/FYP/Sources/launcher.cpp
  Headers/alpr_jpeg.h

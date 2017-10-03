@@ -4,10 +4,6 @@
 CMakeFiles/openALPR_test.dir/Sources/alpr_jpeg.cpp.o: Sources/alpr_jpeg.cpp
 CMakeFiles/openALPR_test.dir/Sources/alpr_jpeg.cpp.o: Headers/alpr_jpeg.h
 
-CMakeFiles/openALPR_test.dir/Sources/camera_grab.cpp.o: Sources/camera_grab.cpp
-CMakeFiles/openALPR_test.dir/Sources/camera_grab.cpp.o: Headers/camera_grab.h
-CMakeFiles/openALPR_test.dir/Sources/camera_grab.cpp.o: Headers/v4l2_factory.h
-
 CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.o: Sources/launcher.cpp
 CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.o: Headers/alpr_jpeg.h
 CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.o: Headers/launcher.h

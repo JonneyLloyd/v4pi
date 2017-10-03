@@ -10,12 +10,6 @@
 alpr_jpeg.h
 /home/pi/FYP/Sources/alpr_jpeg.h
 
-/home/pi/FYP/Sources/camera_grab.cpp
-camera_grab.h
-/home/pi/FYP/Sources/camera_grab.h
-v4l2_factory.h
-/home/pi/FYP/Sources/v4l2_factory.h
-
 /home/pi/FYP/Sources/launcher.cpp
 launcher.h
 /home/pi/FYP/Sources/launcher.h
@@ -30,26 +24,6 @@ launcher.h
 
 Headers/alpr_jpeg.h
 alpr.h
--
-
-Headers/camera_grab.h
-linux/videodev2.h
--
-sys/ioctl.h
--
-errno.h
--
-sys/mman.h
--
-stdio.h
--
-stdlib.h
--
-string.h
--
-fcntl.h
--
-unistd.h
 -
 
 Headers/launcher.h
