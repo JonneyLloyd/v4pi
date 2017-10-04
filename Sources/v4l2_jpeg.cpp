@@ -1,37 +1,37 @@
 #include "v4l2_jpeg.h"
 
-V4l2_Jpeg::V4l2_Jpeg(std::string address, int width, int height)
+V4l2Jpeg::V4l2Jpeg(std::string address, int width, int height)
   : address{address},
     width{width},
     height{height}
     {
     }
 
-void V4l2_Jpeg::set_address(std::string address){
+void V4l2Jpeg::set_address(std::string address){
   this->address = address;
 }
 
-std::string V4l2_Jpeg::get_address(){
+std::string V4l2Jpeg::get_address(){
   return this->address;
 }
 
-void V4l2_Jpeg::set_width(int width){
+void V4l2Jpeg::set_width(int width){
   this->width = width;
 }
 
-int V4l2_Jpeg::get_width(){
+int V4l2Jpeg::get_width(){
   return this->width;
 }
 
-void V4l2_Jpeg::set_height(int height){
+void V4l2Jpeg::set_height(int height){
   this->height = height;
 }
 
-int V4l2_Jpeg::get_height(){
+int V4l2Jpeg::get_height(){
   return this->height;
 }
 
-int V4l2_Jpeg::run()
+int V4l2Jpeg::run()
 {
     int fd;
         if((fd = open(get_address().c_str(), O_RDWR)) < 0){
@@ -98,7 +98,7 @@ int V4l2_Jpeg::run()
         }
 
         memset(buffer_start, 0, bufferinfo.length);
-        
+
         // Put the buffer in the incoming queue.
         if(ioctl(fd, VIDIOC_QBUF, &bufferinfo) < 0){
             perror("VIDIOC_QBUF");

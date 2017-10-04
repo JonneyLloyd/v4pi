@@ -5,7 +5,8 @@
 
 int Launcher::cam_test()
 {
-    jpeg_test = new V4l2_Jpeg("/dev/video0", 800, 600);
+    factory = new V4l2Factory();
+    jpeg_test = factory->init();
     return jpeg_test->run();
 }
 

@@ -14,6 +14,10 @@ alpr_jpeg.h
 launcher.h
 /home/pi/FYP/Sources/launcher.h
 
+/home/pi/FYP/Sources/v4l2_factory.cpp
+v4l2_factory.h
+/home/pi/FYP/Sources/v4l2_factory.h
+
 /home/pi/FYP/Sources/v4l2_jpeg.cpp
 v4l2_jpeg.h
 /home/pi/FYP/Sources/v4l2_jpeg.h
@@ -27,12 +31,18 @@ alpr.h
 -
 
 Headers/launcher.h
+v4l2_factory.h
+Headers/v4l2_factory.h
 v4l2_jpeg.h
 Headers/v4l2_jpeg.h
 alpr_jpeg.h
 Headers/alpr_jpeg.h
 
 Headers/v4l2_factory.h
+v4l2_jpeg.h
+Headers/v4l2_jpeg.h
+
+Headers/v4l2_interface.h
 string.h
 -
 string
@@ -55,6 +65,6 @@ unistd.h
 -
 
 Headers/v4l2_jpeg.h
-v4l2_factory.h
-Headers/v4l2_factory.h
+v4l2_interface.h
+Headers/v4l2_interface.h
 

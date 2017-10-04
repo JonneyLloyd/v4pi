@@ -105,9 +105,33 @@ CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.o.provides: CMakeFiles/openALP
 CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.o.provides.build: CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.o
 
 
+CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o: CMakeFiles/openALPR_test.dir/flags.make
+CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o: Sources/v4l2_factory.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o -c /home/pi/FYP/Sources/v4l2_factory.cpp
+
+CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/FYP/Sources/v4l2_factory.cpp > CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.i
+
+CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/FYP/Sources/v4l2_factory.cpp -o CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.s
+
+CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o.requires:
+
+.PHONY : CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o.requires
+
+CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o.provides: CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o.requires
+	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o.provides.build
+.PHONY : CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o.provides
+
+CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o.provides.build: CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o
+
+
 CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.o: CMakeFiles/openALPR_test.dir/flags.make
 CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.o: Sources/v4l2_jpeg.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.o -c /home/pi/FYP/Sources/v4l2_jpeg.cpp
 
 CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/openALPR_test.dir/main.cpp.o: CMakeFiles/openALPR_test.dir/flags.make
 CMakeFiles/openALPR_test.dir/main.cpp.o: main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/openALPR_test.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/openALPR_test.dir/main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/openALPR_test.dir/main.cpp.o -c /home/pi/FYP/main.cpp
 
 CMakeFiles/openALPR_test.dir/main.cpp.i: cmake_force
@@ -157,6 +181,7 @@ CMakeFiles/openALPR_test.dir/main.cpp.o.provides.build: CMakeFiles/openALPR_test
 openALPR_test_OBJECTS = \
 "CMakeFiles/openALPR_test.dir/Sources/alpr_jpeg.cpp.o" \
 "CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.o" \
+"CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o" \
 "CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.o" \
 "CMakeFiles/openALPR_test.dir/main.cpp.o"
 
@@ -165,6 +190,7 @@ openALPR_test_EXTERNAL_OBJECTS =
 
 openALPR_test: CMakeFiles/openALPR_test.dir/Sources/alpr_jpeg.cpp.o
 openALPR_test: CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.o
+openALPR_test: CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o
 openALPR_test: CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.o
 openALPR_test: CMakeFiles/openALPR_test.dir/main.cpp.o
 openALPR_test: CMakeFiles/openALPR_test.dir/build.make
@@ -188,7 +214,7 @@ openALPR_test: /usr/lib/arm-linux-gnueabihf/libopencv_imgproc.so.2.4.9
 openALPR_test: /usr/lib/arm-linux-gnueabihf/libopencv_flann.so.2.4.9
 openALPR_test: /usr/lib/arm-linux-gnueabihf/libopencv_core.so.2.4.9
 openALPR_test: CMakeFiles/openALPR_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable openALPR_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable openALPR_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/openALPR_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -198,6 +224,7 @@ CMakeFiles/openALPR_test.dir/build: openALPR_test
 
 CMakeFiles/openALPR_test.dir/requires: CMakeFiles/openALPR_test.dir/Sources/alpr_jpeg.cpp.o.requires
 CMakeFiles/openALPR_test.dir/requires: CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.o.requires
+CMakeFiles/openALPR_test.dir/requires: CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o.requires
 CMakeFiles/openALPR_test.dir/requires: CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.o.requires
 CMakeFiles/openALPR_test.dir/requires: CMakeFiles/openALPR_test.dir/main.cpp.o.requires
 
