@@ -60,39 +60,39 @@ CMAKE_SOURCE_DIR = /home/pi/FYP
 CMAKE_BINARY_DIR = /home/pi/FYP
 
 #=============================================================================
-# Target rules for target CMakeFiles/openALPR_test.dir
+# Target rules for target CMakeFiles/fyp.dir
 
 # All Build rule for target.
-CMakeFiles/openALPR_test.dir/all:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/depend
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target openALPR_test"
-.PHONY : CMakeFiles/openALPR_test.dir/all
+CMakeFiles/fyp.dir/all:
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/depend
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target fyp"
+.PHONY : CMakeFiles/fyp.dir/all
 
 # Include target in all.
-all: CMakeFiles/openALPR_test.dir/all
+all: CMakeFiles/fyp.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/openALPR_test.dir/rule: cmake_check_build_system
+CMakeFiles/fyp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/FYP/CMakeFiles 6
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/openALPR_test.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/fyp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/FYP/CMakeFiles 0
-.PHONY : CMakeFiles/openALPR_test.dir/rule
+.PHONY : CMakeFiles/fyp.dir/rule
 
 # Convenience name for target.
-openALPR_test: CMakeFiles/openALPR_test.dir/rule
+fyp: CMakeFiles/fyp.dir/rule
 
-.PHONY : openALPR_test
-
-# clean rule for target.
-CMakeFiles/openALPR_test.dir/clean:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/clean
-.PHONY : CMakeFiles/openALPR_test.dir/clean
+.PHONY : fyp
 
 # clean rule for target.
-clean: CMakeFiles/openALPR_test.dir/clean
+CMakeFiles/fyp.dir/clean:
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/clean
+.PHONY : CMakeFiles/fyp.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/fyp.dir/clean
 
 .PHONY : clean
 

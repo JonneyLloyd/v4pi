@@ -114,7 +114,7 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=openALPR_test
+CMAKE_PROJECT_NAME:STATIC=fyp
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -181,6 +181,12 @@ OpenCV_LIB_DIR_DBG:PATH=
 
 //Path where release OpenCV libraries are located
 OpenCV_LIB_DIR_OPT:PATH=
+
+//Value Computed by CMake
+fyp_BINARY_DIR:STATIC=/home/pi/FYP
+
+//Value Computed by CMake
+fyp_SOURCE_DIR:STATIC=/home/pi/FYP
 
 //Value Computed by CMake
 openALPR_test_BINARY_DIR:STATIC=/home/pi/FYP

@@ -7,5 +7,5 @@ V4l2Interface * V4l2Factory::init(){
 }
 
 V4l2Interface * V4l2Factory::init(std::string address, int width, int height){
-  return new V4l2Jpeg(address, width, height);
+  return new V4l2Handler(address, width, height);
 }

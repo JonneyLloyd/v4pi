@@ -1,7 +1,7 @@
 #ifndef V4L2_FACTORY
 #define V4L2_FACTORY
 
-#include "v4l2_jpeg.h"
+#include "v4l2_handler.h"
 
 
 class V4l2Factory{

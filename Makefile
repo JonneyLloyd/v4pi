@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/pi/FYP
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -77,6 +66,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named openALPR_test
+# Target rules for targets named fyp
 
 # Build rule for target.
-openALPR_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 openALPR_test
-.PHONY : openALPR_test
+fyp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fyp
+.PHONY : fyp
 
 # fast build rule for target.
-openALPR_test/fast:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/build
-.PHONY : openALPR_test/fast
+fyp/fast:
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/build
+.PHONY : fyp/fast
 
 Sources/alpr_jpeg.o: Sources/alpr_jpeg.cpp.o
 
@@ -129,7 +129,7 @@ Sources/alpr_jpeg.o: Sources/alpr_jpeg.cpp.o
 
 # target to build an object file
 Sources/alpr_jpeg.cpp.o:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/alpr_jpeg.cpp.o
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/alpr_jpeg.cpp.o
 .PHONY : Sources/alpr_jpeg.cpp.o
 
 Sources/alpr_jpeg.i: Sources/alpr_jpeg.cpp.i
@@ -138,7 +138,7 @@ Sources/alpr_jpeg.i: Sources/alpr_jpeg.cpp.i
 
 # target to preprocess a source file
 Sources/alpr_jpeg.cpp.i:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/alpr_jpeg.cpp.i
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/alpr_jpeg.cpp.i
 .PHONY : Sources/alpr_jpeg.cpp.i
 
 Sources/alpr_jpeg.s: Sources/alpr_jpeg.cpp.s
@@ -147,7 +147,7 @@ Sources/alpr_jpeg.s: Sources/alpr_jpeg.cpp.s
 
 # target to generate assembly for a file
 Sources/alpr_jpeg.cpp.s:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/alpr_jpeg.cpp.s
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/alpr_jpeg.cpp.s
 .PHONY : Sources/alpr_jpeg.cpp.s
 
 Sources/launcher.o: Sources/launcher.cpp.o
@@ -156,7 +156,7 @@ Sources/launcher.o: Sources/launcher.cpp.o
 
 # target to build an object file
 Sources/launcher.cpp.o:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.o
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/launcher.cpp.o
 .PHONY : Sources/launcher.cpp.o
 
 Sources/launcher.i: Sources/launcher.cpp.i
@@ -165,7 +165,7 @@ Sources/launcher.i: Sources/launcher.cpp.i
 
 # target to preprocess a source file
 Sources/launcher.cpp.i:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.i
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/launcher.cpp.i
 .PHONY : Sources/launcher.cpp.i
 
 Sources/launcher.s: Sources/launcher.cpp.s
@@ -174,7 +174,7 @@ Sources/launcher.s: Sources/launcher.cpp.s
 
 # target to generate assembly for a file
 Sources/launcher.cpp.s:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/launcher.cpp.s
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/launcher.cpp.s
 .PHONY : Sources/launcher.cpp.s
 
 Sources/v4l2_factory.o: Sources/v4l2_factory.cpp.o
@@ -183,7 +183,7 @@ Sources/v4l2_factory.o: Sources/v4l2_factory.cpp.o
 
 # target to build an object file
 Sources/v4l2_factory.cpp.o:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.o
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/v4l2_factory.cpp.o
 .PHONY : Sources/v4l2_factory.cpp.o
 
 Sources/v4l2_factory.i: Sources/v4l2_factory.cpp.i
@@ -192,7 +192,7 @@ Sources/v4l2_factory.i: Sources/v4l2_factory.cpp.i
 
 # target to preprocess a source file
 Sources/v4l2_factory.cpp.i:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.i
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/v4l2_factory.cpp.i
 .PHONY : Sources/v4l2_factory.cpp.i
 
 Sources/v4l2_factory.s: Sources/v4l2_factory.cpp.s
@@ -201,35 +201,35 @@ Sources/v4l2_factory.s: Sources/v4l2_factory.cpp.s
 
 # target to generate assembly for a file
 Sources/v4l2_factory.cpp.s:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/v4l2_factory.cpp.s
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/v4l2_factory.cpp.s
 .PHONY : Sources/v4l2_factory.cpp.s
 
-Sources/v4l2_jpeg.o: Sources/v4l2_jpeg.cpp.o
+Sources/v4l2_handler.o: Sources/v4l2_handler.cpp.o
 
-.PHONY : Sources/v4l2_jpeg.o
+.PHONY : Sources/v4l2_handler.o
 
 # target to build an object file
-Sources/v4l2_jpeg.cpp.o:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.o
-.PHONY : Sources/v4l2_jpeg.cpp.o
+Sources/v4l2_handler.cpp.o:
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/v4l2_handler.cpp.o
+.PHONY : Sources/v4l2_handler.cpp.o
 
-Sources/v4l2_jpeg.i: Sources/v4l2_jpeg.cpp.i
+Sources/v4l2_handler.i: Sources/v4l2_handler.cpp.i
 
-.PHONY : Sources/v4l2_jpeg.i
+.PHONY : Sources/v4l2_handler.i
 
 # target to preprocess a source file
-Sources/v4l2_jpeg.cpp.i:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.i
-.PHONY : Sources/v4l2_jpeg.cpp.i
+Sources/v4l2_handler.cpp.i:
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/v4l2_handler.cpp.i
+.PHONY : Sources/v4l2_handler.cpp.i
 
-Sources/v4l2_jpeg.s: Sources/v4l2_jpeg.cpp.s
+Sources/v4l2_handler.s: Sources/v4l2_handler.cpp.s
 
-.PHONY : Sources/v4l2_jpeg.s
+.PHONY : Sources/v4l2_handler.s
 
 # target to generate assembly for a file
-Sources/v4l2_jpeg.cpp.s:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/Sources/v4l2_jpeg.cpp.s
-.PHONY : Sources/v4l2_jpeg.cpp.s
+Sources/v4l2_handler.cpp.s:
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/v4l2_handler.cpp.s
+.PHONY : Sources/v4l2_handler.cpp.s
 
 main.o: main.cpp.o
 
@@ -237,7 +237,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -246,7 +246,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -255,7 +255,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/openALPR_test.dir/build.make CMakeFiles/openALPR_test.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -264,9 +264,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... openALPR_test"
+	@echo "... edit_cache"
+	@echo "... fyp"
 	@echo "... Sources/alpr_jpeg.o"
 	@echo "... Sources/alpr_jpeg.i"
 	@echo "... Sources/alpr_jpeg.s"
@@ -276,9 +276,9 @@ help:
 	@echo "... Sources/v4l2_factory.o"
 	@echo "... Sources/v4l2_factory.i"
 	@echo "... Sources/v4l2_factory.s"
-	@echo "... Sources/v4l2_jpeg.o"
-	@echo "... Sources/v4l2_jpeg.i"
-	@echo "... Sources/v4l2_jpeg.s"
+	@echo "... Sources/v4l2_handler.o"
+	@echo "... Sources/v4l2_handler.i"
+	@echo "... Sources/v4l2_handler.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

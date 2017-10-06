@@ -2,7 +2,7 @@
 #define LAUNCHER_H
 
 #include "v4l2_factory.h"
-#include "v4l2_jpeg.h"
+#include "v4l2_handler.h"
 #include "alpr_jpeg.h"
 
 class Launcher
