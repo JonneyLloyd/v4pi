@@ -41,6 +41,7 @@ int AlprJpeg::run(cv::Mat &frame)
           std::cout << "\t pattern_match: " << candidate.matches_template << std::endl;
         }
     }
+    std::cout << "ALPR complete" << std::endl;
     return 0;
     }
 
