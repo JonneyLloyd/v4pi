@@ -24,13 +24,14 @@ public:
   void get_device_cap(int fd);
   void set_format();
   void buffer_setup();
-  struct v4l2_buffer get_buffer();
+  void* get_buffer();
   void queue_buffer();
   void dequeue_buffer();
   void activate_streaming();
   void deactivate_streaming();
   void save_jpeg(std::string save_location);
   void init();
+  void teardown();
 
 private:
   std::string address;
@@ -44,8 +45,6 @@ private:
   struct v4l2_buffer bufferinfo;
   void* buffer_start;
   int buf_type;
-
-
 
 };
 

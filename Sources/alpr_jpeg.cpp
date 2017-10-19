@@ -1,5 +1,5 @@
 #include "alpr_jpeg.h"
-int AlprJpeg::run()
+int AlprJpeg::run(cv::Mat &frame)
 {
     {
 
@@ -21,10 +21,11 @@ int AlprJpeg::run()
         std::cerr << "Error loading OpenALPR" << std::endl;
         return 1;
     }
-
+    std::vector<alpr::AlprRegionOfInterest> regionsOfInterest;
+    regionsOfInterest.push_back(alpr::AlprRegionOfInterest(0, 0, frame.cols, frame.rows));
     // Recognize an image file. Alternatively, you could provide the image bytes in-memory.
-    alpr::AlprResults results = openalpr.recognize("/home/pi/myimage.jpeg");
-
+    alpr::AlprResults results = openalpr.recognize(frame.data, frame.elemSize(), frame.cols, frame.rows, regionsOfInterest);
+    //alpr::AlprResults results = openalpr.recognize(*frame);
     // Carefully observe the results. There may be multiple plates in an image,
     // and each plate returns the top N candidates.
     std::cout << "Reading image" << std::endl;
@@ -42,5 +43,6 @@ int AlprJpeg::run()
     }
     return 0;
     }
+
 
 }

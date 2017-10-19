@@ -4,17 +4,20 @@
 #include "v4l2_factory.h"
 #include "v4l2_handler.h"
 #include "alpr_jpeg.h"
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
 
 class Launcher
 {
 public:
     int cam_test();
-    int alpr_test();
 
 private:
     V4l2Factory* factory;
     V4l2Interface* jpeg_test;
     AlprJpeg alprJpeg;
+    cv::Mat frame;
+    std::vector<int> compression_params;
 };
 
 

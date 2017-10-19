@@ -13,6 +13,8 @@ alpr_jpeg.h
 /home/pi/FYP/Sources/launcher.cpp
 launcher.h
 /home/pi/FYP/Sources/launcher.h
+vector
+-
 
 /home/pi/FYP/Sources/v4l2_factory.cpp
 v4l2_factory.h
@@ -27,6 +29,10 @@ launcher.h
 /home/pi/FYP/launcher.h
 
 Headers/alpr_jpeg.h
+opencv2/core/core.hpp
+-
+opencv2/highgui/highgui.hpp
+-
 alpr.h
 -
 
@@ -37,6 +43,10 @@ v4l2_handler.h
 Headers/v4l2_handler.h
 alpr_jpeg.h
 Headers/alpr_jpeg.h
+opencv2/core/core.hpp
+-
+opencv2/highgui/highgui.hpp
+-
 
 Headers/v4l2_factory.h
 v4l2_handler.h

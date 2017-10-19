@@ -25,13 +25,14 @@ public:
   virtual void get_device_cap(int fd) = 0;
   virtual void set_format() = 0;
   virtual void buffer_setup() = 0;
-  virtual struct v4l2_buffer get_buffer() = 0;
+  virtual void*  get_buffer() = 0;
   virtual void queue_buffer() = 0;
   virtual void dequeue_buffer() = 0;
   virtual void activate_streaming() = 0;
   virtual void deactivate_streaming() = 0;
   virtual void save_jpeg(std::string save_location) = 0;
   virtual void init() = 0;
+  virtual void teardown() = 0;
 };
 
 

@@ -42,7 +42,7 @@ std::string V4l2Handler::get_save_location(){
 
 
 void V4l2Handler::open_device(){
-  fd = 0;
+  fd = -1;
   if((fd = open(get_address().c_str(), O_RDWR)) < 0){
       perror("open");
       exit(1);
@@ -66,6 +66,7 @@ void V4l2Handler::set_format(){
   format.fmt.pix.pixelformat = V4L2_PIX_FMT_MJPEG;
   format.fmt.pix.width = get_width();
   format.fmt.pix.height = get_height();
+
   if(ioctl(fd, VIDIOC_S_FMT, &format) < 0){
       perror("VIDIOC_S_FMT");
       exit(1);
@@ -108,8 +109,8 @@ void V4l2Handler::buffer_setup(){
   memset(buffer_start, 0, bufferinfo.length);
 }
 
-struct v4l2_buffer V4l2Handler::get_buffer(){
-  return this->bufferinfo;
+void* V4l2Handler::get_buffer(){
+  return this->buffer_start;
 
 }
 
@@ -167,6 +168,10 @@ void V4l2Handler::init(){
   get_device_cap(fd);
   set_format();
   buffer_setup();
+}
+
+void V4l2Handler::teardown(){
+  close(fd);
 }
 
 

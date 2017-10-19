@@ -1,4 +1,5 @@
 #include "launcher.h"
+#include <vector>
 
 int Launcher::cam_test()
 {
@@ -9,12 +10,19 @@ int Launcher::cam_test()
     jpeg_test->activate_streaming();
     jpeg_test->dequeue_buffer();
     jpeg_test->deactivate_streaming();
-    jpeg_test->save_jpeg("/home/pi/myimage.jpeg");
+
+    frame = cv::imdecode(cv::Mat(600,800, CV_8UC3, jpeg_test->get_buffer()),1);
+    compression_params.push_back(cv::IMWRITE_JPEG_QUALITY );
+    //imwrite("image.jpg", frame, compression_params);
+    alprJpeg.run(frame);
+/*
+    jpeg_test->queue_buffer();
+    jpeg_test->dequeue_buffer();
+    frame = cv::imdecode(cv::Mat(600,800, CV_8UC3, jpeg_test->get_buffer()),1);
+    //imwrite("image.jpg", frame, compression_params);
+    alprJpeg.run(frame);
+*/
+    jpeg_test->teardown();
     return 1;
 
-}
-
-int Launcher::alpr_test()
-{
-    return alprJpeg.run();
 }
