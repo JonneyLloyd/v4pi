@@ -76,7 +76,7 @@ void V4l2Handler::set_format(){
 void V4l2Handler::buffer_setup(){
   bufrequest.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
   bufrequest.memory = V4L2_MEMORY_MMAP;
-  bufrequest.count = 1;
+  bufrequest.count = 3;
   if(ioctl(fd, VIDIOC_REQBUFS, &bufrequest) < 0){
       perror("VIDIOC_REQBUFS");
       exit(1);
@@ -172,31 +172,4 @@ void V4l2Handler::init(){
 
 void V4l2Handler::teardown(){
   close(fd);
-}
-
-
-int V4l2Handler::run()
-{
-    init();
-    activate_streaming();
-    dequeue_buffer();
-
-        //while(/* main loop */){
-
-
-            // Queue the next one.
-            /*
-            if(ioctl(fd, VIDIOC_QBUF, &bufferinfo) < 0){
-                perror("VIDIOC_QBUF");
-                exit(1);
-            }
-            */
-        //}
-      deactivate_streaming();
-      set_save_location("/home/pi/myimage.jpeg");
-      save_jpeg(get_save_location());
-
-        close(fd);
-        return 1;
-
 }

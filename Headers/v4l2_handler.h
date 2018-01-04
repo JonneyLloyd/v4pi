@@ -4,9 +4,6 @@
 #include "v4l2_interface.h"
 
 
-
-
-
 class V4l2Handler : public V4l2Interface
 {
 public:
@@ -19,7 +16,6 @@ public:
   int get_height();
   void set_save_location(std::string save_location);
   std::string get_save_location();
-  int run();
   void open_device();
   void get_device_cap(int fd);
   void set_format();

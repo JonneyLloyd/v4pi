@@ -14,7 +14,6 @@
 
 class V4l2Interface{
 public:
-  virtual int run() = 0;
   virtual void set_address(std::string address) = 0;
   virtual std::string get_address() = 0;
   virtual void set_width(int width) = 0;
