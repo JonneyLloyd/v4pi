@@ -177,6 +177,33 @@ Sources/launcher.cpp.s:
 	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/launcher.cpp.s
 .PHONY : Sources/launcher.cpp.s
 
+Sources/launcher_cv.o: Sources/launcher_cv.cpp.o
+
+.PHONY : Sources/launcher_cv.o
+
+# target to build an object file
+Sources/launcher_cv.cpp.o:
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/launcher_cv.cpp.o
+.PHONY : Sources/launcher_cv.cpp.o
+
+Sources/launcher_cv.i: Sources/launcher_cv.cpp.i
+
+.PHONY : Sources/launcher_cv.i
+
+# target to preprocess a source file
+Sources/launcher_cv.cpp.i:
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/launcher_cv.cpp.i
+.PHONY : Sources/launcher_cv.cpp.i
+
+Sources/launcher_cv.s: Sources/launcher_cv.cpp.s
+
+.PHONY : Sources/launcher_cv.s
+
+# target to generate assembly for a file
+Sources/launcher_cv.cpp.s:
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/launcher_cv.cpp.s
+.PHONY : Sources/launcher_cv.cpp.s
+
 Sources/v4l2_factory.o: Sources/v4l2_factory.cpp.o
 
 .PHONY : Sources/v4l2_factory.o
@@ -273,6 +300,9 @@ help:
 	@echo "... Sources/launcher.o"
 	@echo "... Sources/launcher.i"
 	@echo "... Sources/launcher.s"
+	@echo "... Sources/launcher_cv.o"
+	@echo "... Sources/launcher_cv.i"
+	@echo "... Sources/launcher_cv.s"
 	@echo "... Sources/v4l2_factory.o"
 	@echo "... Sources/v4l2_factory.i"
 	@echo "... Sources/v4l2_factory.s"

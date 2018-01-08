@@ -1,0 +1,41 @@
+#include "launcher_cv.h"
+#include <vector>
+#include <chrono>
+
+//sudo modprobe bcm2835-v4l2
+
+int LauncherCV::cam_test()
+{
+    cv::VideoCapture cap(0); //capture the video from webcam
+    if ( !cap.isOpened() )  // if not success, exit program
+    {
+         std::cout << "Cannot open the web cam" << std::endl;
+         return -1;
+    }
+    compression_params.push_back(cv::IMWRITE_JPEG_QUALITY );
+    cv::Mat frame;
+
+    cap.set(CV_CAP_PROP_FRAME_WIDTH,800);
+    cap.set(CV_CAP_PROP_FRAME_HEIGHT,600);
+    cap >> frame; // get a new frame from camera
+    imwrite("imageCV.jpg", frame, compression_params);
+    alprJpeg.run(frame);
+
+
+
+    int x = 0;
+
+    while(x < 10){
+    x++;
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    std::cout << "Loop start" << std::endl;
+    cap >> frame; // get a new frame from camera
+
+    alprJpeg.run(frame);
+    std::chrono::steady_clock::time_point end= std::chrono::steady_clock::now();
+    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
+  }
+    std::cout << "Exiting program" << std::endl;
+    return 1;
+
+}

@@ -18,6 +18,14 @@ vector
 chrono
 -
 
+/home/pi/FYP/Sources/launcher_cv.cpp
+launcher_cv.h
+/home/pi/FYP/Sources/launcher_cv.h
+vector
+-
+chrono
+-
+
 /home/pi/FYP/Sources/v4l2_factory.cpp
 v4l2_factory.h
 /home/pi/FYP/Sources/v4l2_factory.h
@@ -29,6 +37,8 @@ v4l2_handler.h
 /home/pi/FYP/main.cpp
 launcher.h
 /home/pi/FYP/launcher.h
+launcher_cv.h
+/home/pi/FYP/launcher_cv.h
 
 Headers/alpr_jpeg.h
 opencv2/core/core.hpp
@@ -50,6 +60,16 @@ opencv2/core/core.hpp
 opencv2/highgui/highgui.hpp
 -
 
+Headers/launcher_cv.h
+alpr_jpeg.h
+Headers/alpr_jpeg.h
+iostream
+-
+opencv2/highgui/highgui.hpp
+Headers/opencv2/highgui/highgui.hpp
+opencv2/imgproc/imgproc.hpp
+Headers/opencv2/imgproc/imgproc.hpp
+
 Headers/v4l2_factory.h
 v4l2_handler.h
 Headers/v4l2_handler.h
@@ -57,6 +77,12 @@ Headers/v4l2_handler.h
 Headers/v4l2_handler.h
 v4l2_interface.h
 Headers/v4l2_interface.h
+memory
+-
+assert.h
+-
+iostream
+-
 
 Headers/v4l2_interface.h
 string.h

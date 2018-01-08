@@ -1,7 +1,12 @@
 #ifndef V4L2_HANDLER
 #define V4L2_HANDLER
 
+#define CLEAR(x) memset(&(x), 0, sizeof(x))
+
 #include "v4l2_interface.h"
+#include <memory> // unique_ptr
+#include <assert.h>
+#include <iostream>
 
 
 class V4l2Handler : public V4l2Interface
@@ -27,9 +32,15 @@ public:
   void deactivate_streaming();
   void save_jpeg(std::string save_location);
   void init();
+  void start_capturing();
   void teardown();
+  bool read_frame();
 
 private:
+  struct buffer {
+      void   *data;
+      size_t  size;
+};
   std::string address;
   std::string save_location;
   int width;
@@ -39,7 +50,10 @@ private:
   struct v4l2_format format;
   struct v4l2_requestbuffers bufrequest;
   struct v4l2_buffer bufferinfo;
+  struct buffer * buffers;
+  int n_buffers;
   void* buffer_start;
+  void* output;
   int buf_type;
 
 };

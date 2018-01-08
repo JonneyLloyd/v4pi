@@ -11,6 +11,10 @@ CMakeFiles/fyp.dir/Sources/launcher.cpp.o
  Headers/v4l2_factory.h
  Headers/v4l2_handler.h
  Headers/v4l2_interface.h
+CMakeFiles/fyp.dir/Sources/launcher_cv.cpp.o
+ /home/pi/FYP/Sources/launcher_cv.cpp
+ Headers/alpr_jpeg.h
+ Headers/launcher_cv.h
 CMakeFiles/fyp.dir/Sources/v4l2_factory.cpp.o
  /home/pi/FYP/Sources/v4l2_factory.cpp
  Headers/v4l2_factory.h
@@ -24,6 +28,7 @@ CMakeFiles/fyp.dir/main.cpp.o
  /home/pi/FYP/main.cpp
  Headers/alpr_jpeg.h
  Headers/launcher.h
+ Headers/launcher_cv.h
  Headers/v4l2_factory.h
  Headers/v4l2_handler.h
  Headers/v4l2_interface.h

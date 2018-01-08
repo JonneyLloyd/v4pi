@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pi/FYP/Sources/alpr_jpeg.cpp" "/home/pi/FYP/CMakeFiles/fyp.dir/Sources/alpr_jpeg.cpp.o"
   "/home/pi/FYP/Sources/launcher.cpp" "/home/pi/FYP/CMakeFiles/fyp.dir/Sources/launcher.cpp.o"
+  "/home/pi/FYP/Sources/launcher_cv.cpp" "/home/pi/FYP/CMakeFiles/fyp.dir/Sources/launcher_cv.cpp.o"
   "/home/pi/FYP/Sources/v4l2_factory.cpp" "/home/pi/FYP/CMakeFiles/fyp.dir/Sources/v4l2_factory.cpp.o"
   "/home/pi/FYP/Sources/v4l2_handler.cpp" "/home/pi/FYP/CMakeFiles/fyp.dir/Sources/v4l2_handler.cpp.o"
   "/home/pi/FYP/main.cpp" "/home/pi/FYP/CMakeFiles/fyp.dir/main.cpp.o"
