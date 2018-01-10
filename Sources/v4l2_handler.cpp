@@ -63,7 +63,7 @@ void V4l2Handler::get_device_cap(int fd){
 
 void V4l2Handler::set_format(){
   format.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-  format.fmt.pix.pixelformat = V4L2_PIX_FMT_MJPEG;
+  format.fmt.pix.pixelformat = V4L2_PIX_FMT_YUV420;
   format.fmt.pix.width = get_width();
   format.fmt.pix.height = get_height();
 
@@ -143,7 +143,7 @@ std::cout <<  "buffer setup complete";
   memset(buffer_start, 0, bufferinfo.length);
 }*/
 
-void* V4l2Handler::get_buffer(){
+unsigned char * V4l2Handler::get_buffer(){
   read_frame();
   return output;
 
@@ -208,14 +208,8 @@ bool V4l2Handler::read_frame()
     }
 
     assert(buf.index < n_buffers);
-    output= buffers[buf.index].data;
-/*
-    v4lconvert_yuyv_to_rgb24((unsigned char *) buffers[buf.index].data,
-                             rgb_frame.data,
-                             xres,
-                             yres,
-                             stride);
-*/
+    output= (unsigned char *)buffers[buf.index].data;
+
     if (-1 == ioctl(fd, VIDIOC_QBUF, &buf))
         perror("VIDIOC_QBUF");
 
@@ -280,6 +274,5 @@ void V4l2Handler::teardown(){
  for (i = 0; i < n_buffers; ++i)
      if (-1 == munmap(buffers[i].data, buffers[i].size))
          perror("munmap");
-         free (output);
          free(buffers);
 }

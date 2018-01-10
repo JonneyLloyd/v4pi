@@ -9,6 +9,7 @@
 class AlprJpeg{
 public:
     int run(cv::Mat &frame);
+    int run(unsigned char * frame,  int bytesPerPixel, int imgWidth, int imgHeight);
 
 };
 

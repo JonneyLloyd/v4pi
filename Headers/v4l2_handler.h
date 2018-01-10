@@ -25,7 +25,7 @@ public:
   void get_device_cap(int fd);
   void set_format();
   void buffer_setup();
-  void* get_buffer();
+  unsigned char * get_buffer();
   void queue_buffer();
   void dequeue_buffer();
   void activate_streaming();
@@ -53,7 +53,7 @@ private:
   struct buffer * buffers;
   int n_buffers;
   void* buffer_start;
-  void* output;
+  unsigned char * output;
   int buf_type;
 
 };
