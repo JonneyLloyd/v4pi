@@ -26,10 +26,6 @@ public:
   void set_format();
   void buffer_setup();
   unsigned char * get_buffer();
-  void queue_buffer();
-  void dequeue_buffer();
-  void activate_streaming();
-  void deactivate_streaming();
   void save_jpeg(std::string save_location);
   void init();
   void start_capturing();

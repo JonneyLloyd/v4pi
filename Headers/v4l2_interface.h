@@ -25,10 +25,6 @@ public:
   virtual void set_format() = 0;
   virtual void buffer_setup() = 0;
   virtual unsigned char *  get_buffer() = 0;
-  virtual void queue_buffer() = 0;
-  virtual void dequeue_buffer() = 0;
-  virtual void activate_streaming() = 0;
-  virtual void deactivate_streaming() = 0;
   virtual void save_jpeg(std::string save_location) = 0;
   virtual void init() = 0;
   virtual void teardown() = 0;

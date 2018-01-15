@@ -12,6 +12,8 @@ class Launcher
 {
 public:
     int cam_test();
+    int width = 640;
+    int height = 480;
 
 private:
     V4l2Factory* factory;

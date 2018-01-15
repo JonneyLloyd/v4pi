@@ -17,6 +17,8 @@ private:
     AlprJpeg alprJpeg;
     cv::Mat frame;
     std::vector<int> compression_params;
+    int width = 640;
+    int height = 480;
 };
 
 

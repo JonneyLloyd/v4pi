@@ -32,13 +32,18 @@ int AlprJpeg::run(cv::Mat &frame)
     for (int i = 0; i < results.plates.size(); i++)
     {
       alpr::AlprPlateResult plate = results.plates[i];
-      std::cout << "plate" << i << ": " << plate.topNPlates.size() << " results" << std::endl;
+
+
+      //std::cout << "plate" << i << ": " << plate.topNPlates.size() << " results" << std::endl;
 
         for (int k = 0; k < plate.topNPlates.size(); k++)
         {
           alpr::AlprPlate candidate = plate.topNPlates[k];
-          std::cout << "    - " << candidate.characters << "\t confidence: " << candidate.overall_confidence;
-          std::cout << "\t pattern_match: " << candidate.matches_template << std::endl;
+          if (candidate.matches_template == 1){
+            std::cout << "    - " << candidate.characters << "\t confidence: " << candidate.overall_confidence << std::endl;
+          }
+          //std::cout << "    - " << candidate.characters << "\t confidence: " << candidate.overall_confidence;
+          //std::cout << "\t pattern_match: " << candidate.matches_template << std::endl;
         }
     }
     std::cout << "ALPR complete" << std::endl;
@@ -80,13 +85,18 @@ int AlprJpeg::run(unsigned char * frame,  int bytesPerPixel, int imgWidth, int i
     for (int i = 0; i < results.plates.size(); i++)
     {
       alpr::AlprPlateResult plate = results.plates[i];
-      std::cout << "plate" << i << ": " << plate.topNPlates.size() << " results" << std::endl;
+
+
+      //std::cout << "plate" << i << ": " << plate.topNPlates.size() << " results" << std::endl;
 
         for (int k = 0; k < plate.topNPlates.size(); k++)
         {
           alpr::AlprPlate candidate = plate.topNPlates[k];
-          std::cout << "    - " << candidate.characters << "\t confidence: " << candidate.overall_confidence;
-          std::cout << "\t pattern_match: " << candidate.matches_template << std::endl;
+          if (candidate.matches_template == 1){
+            std::cout << "    - " << candidate.characters << "\t confidence: " << candidate.overall_confidence << std::endl;
+          }
+          //std::cout << "    - " << candidate.characters << "\t confidence: " << candidate.overall_confidence;
+          //std::cout << "\t pattern_match: " << candidate.matches_template << std::endl;
         }
     }
     std::cout << "ALPR complete" << std::endl;

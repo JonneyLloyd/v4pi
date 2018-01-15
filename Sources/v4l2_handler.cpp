@@ -100,86 +100,25 @@ void V4l2Handler::buffer_setup(){
 
             buffers[n_buffers].size = bufferinfo.length;
             buffers[n_buffers].data =
-                  mmap(NULL /* start anywhere */,
+                  mmap(NULL,
                         bufferinfo.length,
                         PROT_READ | PROT_WRITE,
                         MAP_SHARED,
-                        fd, bufferinfo.m.offset);
+                        fd,
+                        bufferinfo.m.offset);
 
             if (MAP_FAILED == buffers[n_buffers].data)
                   perror("mmap");
 }
-std::cout <<  "buffer setup complete";
+std::cout <<  "buffer setup complete\n";
 }
-
-
-
-
-/*
-  memset(&bufferinfo, 0, sizeof(bufferinfo));
-
-  bufferinfo.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-  bufferinfo.memory = V4L2_MEMORY_MMAP;
-  bufferinfo.index = 0;
-
-  if(ioctl(fd, VIDIOC_QUERYBUF, &bufferinfo) < 0){
-      perror("VIDIOC_QUERYBUF");
-      exit(1);
-  }
-
-  buffer_start = mmap(
-      NULL,
-      bufferinfo.length,
-      PROT_READ | PROT_WRITE,
-      MAP_SHARED,
-      fd,
-      bufferinfo.m.offset
-  );
-
-  if(buffer_start == MAP_FAILED){
-      perror("mmap");
-      exit(1);
-  }
-  memset(buffer_start, 0, bufferinfo.length);
-}*/
 
 unsigned char * V4l2Handler::get_buffer(){
-  read_frame();
-  return output;
-
+  if (read_frame())
+    return output;
+  else
+    return NULL;
 }
-
-void V4l2Handler::queue_buffer(){
-  // Put the buffer in the incoming queue.
-  if(ioctl(fd, VIDIOC_QBUF, &bufferinfo) < 0){
-      perror("VIDIOC_QBUF");
-      exit(1);
-  }
-}
-
-void V4l2Handler::dequeue_buffer(){
-  // Dequeue the buffer.
-  if(ioctl(fd, VIDIOC_DQBUF, &bufferinfo) < 0){
-      perror("VIDIOC_DQBUF");
-      exit(1);
-  }
-
-  bufferinfo.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-  bufferinfo.memory = V4L2_MEMORY_MMAP;
-  /* Set the index if using several buffers */
-}
-
-void V4l2Handler::activate_streaming(){
-  // Activate streaming
-  buf_type = bufferinfo.type;
-  if(ioctl(fd, VIDIOC_STREAMON, &buf_type) < 0){
-      perror("VIDIOC_STREAMON");
-      exit(1);
-  }
-}
-
-
-
 
 bool V4l2Handler::read_frame()
 {
@@ -198,7 +137,7 @@ bool V4l2Handler::read_frame()
                 return false;
 
             case EIO:
-                /* Could ignore EIO, see spec. */
+                /* ignore EIO. */
 
                 /* fall through */
 
@@ -235,16 +174,6 @@ void V4l2Handler::start_capturing()
     type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
     if (-1 == ioctl(fd, VIDIOC_STREAMON, &type))
         perror("VIDIOC_STREAMON");
-}
-
-
-
-void V4l2Handler::deactivate_streaming(){
-  // Deactivate streaming
-  if(ioctl(fd, VIDIOC_STREAMOFF, &buf_type) < 0){
-      perror("VIDIOC_STREAMOFF");
-      exit(1);
-  }
 }
 
 void V4l2Handler::save_jpeg(std::string save_location){

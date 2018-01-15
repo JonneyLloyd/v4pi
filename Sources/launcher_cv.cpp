@@ -6,8 +6,8 @@
 
 int LauncherCV::cam_test()
 {
-    cv::VideoCapture cap(0); //capture the video from webcam
-    if ( !cap.isOpened() )  // if not success, exit program
+    cv::VideoCapture cap(0);
+    if ( !cap.isOpened() )
     {
          std::cout << "Cannot open the web cam" << std::endl;
          return -1;
@@ -15,11 +15,11 @@ int LauncherCV::cam_test()
     compression_params.push_back(cv::IMWRITE_JPEG_QUALITY );
     cv::Mat frame;
 
-    cap.set(CV_CAP_PROP_FRAME_WIDTH,800);
-    cap.set(CV_CAP_PROP_FRAME_HEIGHT,600);
+    cap.set(CV_CAP_PROP_FRAME_WIDTH, width);
+    cap.set(CV_CAP_PROP_FRAME_HEIGHT, height);
     cap >> frame; // get a new frame from camera
-    imwrite("imageCV.jpg", frame, compression_params);
-    alprJpeg.run(frame);
+    imwrite("imageCV.jpg", frame, compression_params); //sanity check
+
 
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     std::chrono::steady_clock::time_point end= std::chrono::steady_clock::now();
