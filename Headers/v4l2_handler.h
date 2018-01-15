@@ -31,6 +31,7 @@ public:
   void start_capturing();
   void teardown();
   bool read_frame();
+  void set_framerate();
 
 private:
   struct buffer {

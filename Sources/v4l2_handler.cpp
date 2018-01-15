@@ -73,6 +73,25 @@ void V4l2Handler::set_format(){
   }
 }
 
+void V4l2Handler::set_framerate()
+{
+
+    struct v4l2_streamparm parm;
+    CLEAR(parm);
+
+    parm.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+
+    parm.parm.capture.timeperframe.numerator = 1;
+    parm.parm.capture.timeperframe.denominator = 60;
+
+
+    if(ioctl(fd, VIDIOC_S_PARM, &parm) < 0){
+        perror("VIDIOC_S_FMT");
+        exit(1);
+    }
+
+}
+
 void V4l2Handler::buffer_setup(){
   bufrequest.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
   bufrequest.memory = V4L2_MEMORY_MMAP;
@@ -191,8 +210,11 @@ void V4l2Handler::save_jpeg(std::string save_location){
 void V4l2Handler::init(){
   open_device();
   get_device_cap(fd);
+  set_framerate();
   set_format();
+
   buffer_setup();
+
   start_capturing();
 }
 

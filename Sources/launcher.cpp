@@ -11,6 +11,7 @@ int Launcher::cam_test()
     factory = new V4l2Factory();
     jpeg_test = factory->init("/dev/video0", width, height);
     jpeg_test->init();
+    
 
 
     cv::Mat picYV12 = cv::Mat(height * 3/2, width, CV_8UC1, jpeg_test->get_buffer());
@@ -22,12 +23,13 @@ int Launcher::cam_test()
     std::chrono::steady_clock::time_point end= std::chrono::steady_clock::now();
     int time_diff = 0, count = 0;
     unsigned char * test_frame;
-    while (time_diff < 1000){
-      begin = std::chrono::steady_clock::now();
+    begin = std::chrono::steady_clock::now();
+    while (time_diff <= 1000){
+
       test_frame = jpeg_test->get_buffer();
       count ++;
       end= std::chrono::steady_clock::now();
-      time_diff += std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+      time_diff = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
     }
     std::cout << "Framerate test " <<  count << " FPS" << std::endl;
 

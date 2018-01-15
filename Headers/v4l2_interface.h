@@ -28,6 +28,7 @@ public:
   virtual void save_jpeg(std::string save_location) = 0;
   virtual void init() = 0;
   virtual void teardown() = 0;
+  virtual void set_framerate() = 0;
 };
 
 
