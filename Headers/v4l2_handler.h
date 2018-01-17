@@ -7,6 +7,8 @@
 #include <memory> // unique_ptr
 #include <assert.h>
 #include <iostream>
+#include <omp.h>
+
 
 
 class V4l2Handler : public V4l2Interface
@@ -26,6 +28,7 @@ public:
   void set_format();
   void buffer_setup();
   unsigned char * get_buffer();
+  cv::Mat get_cv_mat();
   void save_jpeg(std::string save_location);
   void init();
   void start_capturing();
@@ -52,7 +55,15 @@ private:
   void* buffer_start;
   unsigned char * output;
   int buf_type;
-
+  cv::Mat mat;
+  
+public:
+  enum DataTypes
+     {
+        YU12, MJPEG, RGB
+     } ;
 };
+
+
 
 #endif

@@ -85,6 +85,8 @@ assert.h
 -
 iostream
 -
+omp.h
+-
 
 Headers/v4l2_interface.h
 string.h
@@ -106,5 +108,11 @@ stdlib.h
 fcntl.h
 -
 unistd.h
+-
+opencv2/core/core.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+opencv2/imgproc/imgproc.hpp
 -
 

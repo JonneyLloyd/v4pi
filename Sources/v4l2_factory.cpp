@@ -6,5 +6,10 @@ V4l2Interface * V4l2Factory::init(){
 
 V4l2Interface * V4l2Factory::init(std::string address, int width, int height){
   return new V4l2Handler(address, width, height);
-  
+
 }
+/*
+V4l2Interface * V4l2Factory::init(std::string address, int width, int height, V4l2Handler::data_types data_type){
+  return new V4l2Handler(address, width, height);
+
+}*/

@@ -538,3 +538,51 @@ make[1]: Leaving directory '/home/pi/FYP/CMakeFiles/CMakeTmp'
     Feature record: CXX_FEATURE:0cxx_variable_templates
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED succeeded with the following output:
+Change Dir: /home/pi/FYP/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f649c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f649c.dir/build.make CMakeFiles/cmTC_f649c.dir/build
+make[1]: Entering directory '/home/pi/FYP/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f649c.dir/src.c.o
+/usr/bin/cc    -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles/cmTC_f649c.dir/src.c.o   -c /home/pi/FYP/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_f649c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f649c.dir/link.txt --verbose=1
+/usr/bin/cc   -DOpenMP_FLAG_DETECTED -fopenmp    CMakeFiles/cmTC_f649c.dir/src.c.o  -o cmTC_f649c -rdynamic 
+make[1]: Leaving directory '/home/pi/FYP/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED succeeded with the following output:
+Change Dir: /home/pi/FYP/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fafa3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fafa3.dir/build.make CMakeFiles/cmTC_fafa3.dir/build
+make[1]: Entering directory '/home/pi/FYP/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_fafa3.dir/src.cxx.o
+/usr/bin/c++     -std=c++11 -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles/cmTC_fafa3.dir/src.cxx.o -c /home/pi/FYP/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_fafa3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fafa3.dir/link.txt --verbose=1
+/usr/bin/c++    -std=c++11 -DOpenMP_FLAG_DETECTED -fopenmp    CMakeFiles/cmTC_fafa3.dir/src.cxx.o  -o cmTC_fafa3 -rdynamic 
+make[1]: Leaving directory '/home/pi/FYP/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+

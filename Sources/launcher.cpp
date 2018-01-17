@@ -9,12 +9,13 @@
 int Launcher::cam_test()
 {
     factory = new V4l2Factory();
+    //jpeg_test = factory->init("/dev/video0", width, height, V4l2Handler::data_types::YU12);
     jpeg_test = factory->init("/dev/video0", width, height);
     jpeg_test->init();
-    
 
 
-    cv::Mat picYV12 = cv::Mat(height * 3/2, width, CV_8UC1, jpeg_test->get_buffer());
+    cv::Mat picYV12 = cv::Mat(height, width, CV_8UC1, jpeg_test->get_buffer());
+    //cv::Mat picYV12 = cv::Mat(height * 3/2, width, CV_8UC1, jpeg_test->get_buffer());
     //cv::Mat picBGR;
     //cv::cvtColor(picYV12, picBGR, cv::COLOR_YUV2BGR_YV12);
     cv::imwrite("test.bmp", picYV12);  //sanity check
@@ -35,7 +36,8 @@ int Launcher::cam_test()
 
 
     int x = 0;
-    while(x < 10){
+    std::cout << "Raw data " << std::endl;
+    while(x < 5){
       x++;
       begin = std::chrono::steady_clock::now();
       std::cout << "Loop start" << std::endl;
@@ -44,6 +46,21 @@ int Launcher::cam_test()
       end= std::chrono::steady_clock::now();
       std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
     }
+
+    x = 0;
+    std::cout << "OpenCV conversion " << std::endl;
+    while(x < 5){
+      x++;
+      begin = std::chrono::steady_clock::now();
+      std::cout << "Loop start" << std::endl;
+      frame = jpeg_test->get_cv_mat();
+      alprJpeg.run(frame);
+      end= std::chrono::steady_clock::now();
+      std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
+    }
+
+
+
 
     jpeg_test->teardown();
     std::cout << "Exiting program" << std::endl;

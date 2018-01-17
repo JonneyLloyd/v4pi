@@ -5,6 +5,9 @@ V4l2Handler::V4l2Handler(std::string address, int width, int height)
     width{width},
     height{height}
     {
+      int nThreads;
+      nThreads = omp_get_max_threads();
+      omp_set_num_threads(nThreads);
     }
 
 void V4l2Handler::set_address(std::string address){
@@ -80,16 +83,14 @@ void V4l2Handler::set_framerate()
     CLEAR(parm);
 
     parm.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-
+    //reversed due to driver issue
     parm.parm.capture.timeperframe.numerator = 1;
     parm.parm.capture.timeperframe.denominator = 60;
-
 
     if(ioctl(fd, VIDIOC_S_PARM, &parm) < 0){
         perror("VIDIOC_S_FMT");
         exit(1);
     }
-
 }
 
 void V4l2Handler::buffer_setup(){
@@ -139,9 +140,14 @@ unsigned char * V4l2Handler::get_buffer(){
     return NULL;
 }
 
+cv::Mat V4l2Handler::get_cv_mat(){
+  #pragma omp parallel
+  mat = cv::Mat(get_height(), get_width(), CV_8UC1, get_buffer());
+  return mat;
+}
+
 bool V4l2Handler::read_frame()
 {
-
     struct v4l2_buffer buf;
     int i;
 
@@ -212,9 +218,7 @@ void V4l2Handler::init(){
   get_device_cap(fd);
   set_framerate();
   set_format();
-
   buffer_setup();
-
   start_capturing();
 }
 
