@@ -4,6 +4,7 @@
 #define CLEAR(x) memset(&(x), 0, sizeof(x))
 
 #include "v4l2_interface.h"
+#include "data_types_enum.h"
 #include <memory> // unique_ptr
 #include <assert.h>
 #include <iostream>
@@ -15,6 +16,8 @@ class V4l2Handler : public V4l2Interface
 {
 public:
   V4l2Handler(std::string address, int width, int height);
+  V4l2Handler(std::string address, int width, int height, DataTypes::Enum data_type);
+
   void set_address(std::string address);
   std::string get_address();
   void set_width(int width);
@@ -56,12 +59,8 @@ private:
   unsigned char * output;
   int buf_type;
   cv::Mat mat;
-  
-public:
-  enum DataTypes
-     {
-        YU12, MJPEG, RGB
-     } ;
+  DataTypes::Enum data_type;
+
 };
 
 

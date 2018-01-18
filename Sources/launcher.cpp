@@ -1,4 +1,5 @@
 #include "launcher.h"
+#include "data_types_enum.h"
 #include <vector>
 #include <chrono>
 
@@ -9,7 +10,7 @@
 int Launcher::cam_test()
 {
     factory = new V4l2Factory();
-    //jpeg_test = factory->init("/dev/video0", width, height, V4l2Handler::data_types::YU12);
+    //jpeg_test = factory->init("/dev/video0", width, height, DataTypes::Enum::YU12);
     jpeg_test = factory->init("/dev/video0", width, height);
     jpeg_test->init();
 

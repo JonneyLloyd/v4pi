@@ -3,12 +3,27 @@
 V4l2Handler::V4l2Handler(std::string address, int width, int height)
   : address{address},
     width{width},
-    height{height}
+    height{height},
+    data_type{DataTypes::Enum::YU12}
     {
       int nThreads;
       nThreads = omp_get_max_threads();
       omp_set_num_threads(nThreads);
     }
+
+V4l2Handler::V4l2Handler(std::string address, int width, int height, DataTypes::Enum data_type)
+  : address{address},
+    width{width},
+    height{height},
+    data_type{data_type}
+    {
+      int nThreads;
+      nThreads = omp_get_max_threads();
+      omp_set_num_threads(nThreads);
+    }
+
+
+
 
 void V4l2Handler::set_address(std::string address){
   this->address = address;
@@ -66,7 +81,27 @@ void V4l2Handler::get_device_cap(int fd){
 
 void V4l2Handler::set_format(){
   format.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-  format.fmt.pix.pixelformat = V4L2_PIX_FMT_YUV420;
+  switch(data_type) {
+      case DataTypes::Enum::YU12  :
+      std::cout << "YU12 Formated selected "  << std::endl;
+      format.fmt.pix.pixelformat = V4L2_PIX_FMT_YUV420;
+      break;
+
+      case DataTypes::Enum::MJPEG  :
+      std::cout << "MJPEG not currently supported! YU12 Formated selected "  << std::endl;
+      format.fmt.pix.pixelformat = V4L2_PIX_FMT_YUV420;
+      break;
+
+      case DataTypes::Enum::RGB  :
+      std::cout << "RGB not currently supported! YU12 Formated selected "  << std::endl;
+      format.fmt.pix.pixelformat = V4L2_PIX_FMT_YUV420;
+      break;
+
+      default :
+      std::cout << "Unknown format! YU12 Formated selected "  << std::endl;
+      format.fmt.pix.pixelformat = V4L2_PIX_FMT_YUV420;
+}
+
   format.fmt.pix.width = get_width();
   format.fmt.pix.height = get_height();
 
