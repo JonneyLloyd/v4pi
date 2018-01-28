@@ -36,7 +36,4 @@ public:
 };
 
 
-
-
-
 #endif // V4L2_INTERFACE

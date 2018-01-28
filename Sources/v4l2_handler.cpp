@@ -22,9 +22,6 @@ V4l2Handler::V4l2Handler(std::string address, int width, int height, DataTypes::
       omp_set_num_threads(nThreads);
     }
 
-
-
-
 void V4l2Handler::set_address(std::string address){
   this->address = address;
 }
@@ -57,8 +54,6 @@ std::string V4l2Handler::get_save_location(){
   return this->save_location;
 }
 
-
-
 void V4l2Handler::open_device(){
   fd = -1;
   if((fd = open(get_address().c_str(), O_RDWR)) < 0){
@@ -83,13 +78,13 @@ void V4l2Handler::set_format(){
   format.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
   switch(data_type) {
       case DataTypes::Enum::YU12  :
-      std::cout << "YU12 Formated selected "  << std::endl;
+      std::cout << "YU12 format selected"  << std::endl;
       format.fmt.pix.pixelformat = V4L2_PIX_FMT_YUV420;
       break;
 
       case DataTypes::Enum::MJPEG  :
-      std::cout << "MJPEG not currently supported! YU12 Formated selected "  << std::endl;
-      format.fmt.pix.pixelformat = V4L2_PIX_FMT_YUV420;
+      std::cout << "MJPEG format selected"  << std::endl;
+      format.fmt.pix.pixelformat = V4L2_PIX_FMT_MJPEG;
       break;
 
       case DataTypes::Enum::RGB  :
@@ -176,8 +171,22 @@ unsigned char * V4l2Handler::get_buffer(){
 }
 
 cv::Mat V4l2Handler::get_cv_mat(){
-  #pragma omp parallel
-  mat = cv::Mat(get_height(), get_width(), CV_8UC1, get_buffer());
+  switch(data_type) {
+      case DataTypes::Enum::YU12  :
+      mat = cv::Mat(get_height(), get_width(), CV_8UC1, get_buffer());
+      break;
+
+      case DataTypes::Enum::MJPEG  :
+      mat = cv::imdecode(cv::Mat(600,800, CV_8UC3, get_buffer()),1);
+      break;
+
+      case DataTypes::Enum::RGB  :
+      mat = cv::Mat(get_height(), get_width(), CV_8UC3, get_buffer());
+      break;
+
+      default :
+      mat = cv::Mat(get_height(), get_width(), CV_8UC1, get_buffer());
+}
   return mat;
 }
 
@@ -260,9 +269,8 @@ void V4l2Handler::init(){
 void V4l2Handler::teardown(){
   close(fd);
   int i;
-
- for (i = 0; i < n_buffers; ++i)
+  for (i = 0; i < n_buffers; ++i)
      if (-1 == munmap(buffers[i].data, buffers[i].size))
          perror("munmap");
-         free(buffers);
+  free(buffers);
 }

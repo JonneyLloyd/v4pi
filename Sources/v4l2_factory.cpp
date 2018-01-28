@@ -2,7 +2,7 @@
 
 
 V4l2Interface * V4l2Factory::init(){
-  return V4l2Factory::init("/dev/video0", 800, 600);
+  return V4l2Factory::init("/dev/video0", 640, 480);
 }
 
 V4l2Interface * V4l2Factory::init(std::string address, int width, int height){

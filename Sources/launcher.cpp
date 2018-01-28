@@ -11,14 +11,19 @@ int Launcher::cam_test()
 {
     factory = new V4l2Factory();
     //jpeg_test = factory->init("/dev/video0", width, height, DataTypes::Enum::YU12);
-    jpeg_test = factory->init("/dev/video0", width, height);
+    jpeg_test = factory->init("/dev/video0", width, height, DataTypes::Enum::MJPEG);
     jpeg_test->init();
 
+    //MJPEG
+    cv::Mat picYV12 = cv::imdecode(cv::Mat(600,800, CV_8UC3, jpeg_test->get_buffer()),1);
 
-    cv::Mat picYV12 = cv::Mat(height, width, CV_8UC1, jpeg_test->get_buffer());
+    //YU12
+    //cv::Mat picYV12 = cv::Mat(height, width, CV_8UC1, jpeg_test->get_buffer());
     //cv::Mat picYV12 = cv::Mat(height * 3/2, width, CV_8UC1, jpeg_test->get_buffer());
     //cv::Mat picBGR;
     //cv::cvtColor(picYV12, picBGR, cv::COLOR_YUV2BGR_YV12);
+
+    
     cv::imwrite("test.bmp", picYV12);  //sanity check
 
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
