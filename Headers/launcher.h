@@ -4,6 +4,7 @@
 #include "v4l2_factory.h"
 #include "v4l2_handler.h"
 #include "alpr_jpeg.h"
+#include "data_types_enum.h"
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -22,6 +23,8 @@ private:
     AlprJpeg alprJpeg;
     cv::Mat frame;
     std::vector<int> compression_params;
+    DataTypes::Enum data_type;
+    std::string address;
 };
 
 

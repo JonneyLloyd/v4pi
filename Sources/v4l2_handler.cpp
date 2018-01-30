@@ -88,9 +88,16 @@ void V4l2Handler::set_format(){
       break;
 
       case DataTypes::Enum::RGB  :
-      std::cout << "RGB not currently supported! YU12 Formated selected "  << std::endl;
-      format.fmt.pix.pixelformat = V4L2_PIX_FMT_YUV420;
+      std::cout << "RGB not currently supported BGR selected "  << std::endl;
+      format.fmt.pix.pixelformat = V4L2_PIX_FMT_RGB24;
       break;
+
+      case DataTypes::Enum::BGR  :
+      std::cout << "BGR format selected "  << std::endl;
+      format.fmt.pix.pixelformat = V4L2_PIX_FMT_BGR24;
+      break;
+
+
 
       default :
       std::cout << "Unknown format! YU12 Formated selected "  << std::endl;
@@ -181,6 +188,10 @@ cv::Mat V4l2Handler::get_cv_mat(){
       break;
 
       case DataTypes::Enum::RGB  :
+      mat = cv::Mat(get_height(), get_width(), CV_8UC3, get_buffer());
+      break;
+
+      case DataTypes::Enum::BGR  :
       mat = cv::Mat(get_height(), get_width(), CV_8UC3, get_buffer());
       break;
 

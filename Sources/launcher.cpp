@@ -1,26 +1,43 @@
 #include "launcher.h"
-#include "data_types_enum.h"
+
 #include <vector>
 #include <chrono>
 
 //sudo modprobe bcm2835-v4l2
-//sudo sshfs -o allow_other,default_permissions pi@192.168.1.7:/home/pi/FYP/ /mnt/raspberry/
+//sudo sshfs -o allow_other,default_permissions pi@192.168.1.101:/home/pi/FYP/ /mnt/raspberry/
 
 
 int Launcher::cam_test()
 {
     factory = new V4l2Factory();
-    jpeg_test = factory->init("/dev/video0", width, height, DataTypes::Enum::YU12);
-    //jpeg_test = factory->init("/dev/video0", width, height, DataTypes::Enum::MJPEG);
+    data_type = DataTypes::Enum::YU12;
+    address = "/dev/video0";
+    jpeg_test = factory->init(address, width, height, data_type);
     jpeg_test->init();
+    cv::Mat test_pic;
 
-    //MJPEG
-    //cv::Mat picYV12 = cv::imdecode(cv::Mat(600,800, CV_8UC3, jpeg_test->get_buffer()),1);
+    switch(data_type) {
+        case DataTypes::Enum::YU12  :
+        test_pic = cv::Mat(height, width, CV_8UC1, jpeg_test->get_buffer());
+        break;
 
-    //YU12
-    cv::Mat picYV12 = cv::Mat(height, width, CV_8UC1, jpeg_test->get_buffer());
+        case DataTypes::Enum::MJPEG  :
+        test_pic = cv::imdecode(cv::Mat(height,width, CV_8UC3, jpeg_test->get_buffer()),1);
+        break;
 
-    cv::imwrite("test.bmp", picYV12);  //sanity check
+        case DataTypes::Enum::RGB  :
+        std::cout << "Unsupported format!" << std::endl;
+        break;
+
+        case DataTypes::Enum::BGR  :
+        test_pic = cv::Mat(height, width, CV_8UC3, jpeg_test->get_buffer());
+        break;
+
+        default :
+        std::cout << "Unsupported format!" << std::endl;
+  }
+
+    cv::imwrite("test.bmp", test_pic);  //sanity check
 
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     std::chrono::steady_clock::time_point end= std::chrono::steady_clock::now();
@@ -44,8 +61,33 @@ int Launcher::cam_test()
       begin = std::chrono::steady_clock::now();
       std::cout << "Loop start" << std::endl;
 
+      switch(data_type) {
+          case DataTypes::Enum::YU12  :
+          alprJpeg.run(jpeg_test->get_buffer(),  1, width, height);
+          break;
+
+          case DataTypes::Enum::MJPEG  :
+          frame = (cv::imdecode(cv::Mat(height,width, CV_8UC3, jpeg_test->get_buffer()),1));
+          alprJpeg.run(frame);
+          break;
+
+          case DataTypes::Enum::RGB  :
+          std::cout << "Unsupported format!" << std::endl;
+          break;
+
+          case DataTypes::Enum::BGR  :
+          alprJpeg.run(jpeg_test->get_buffer(),  3, width, height);
+          break;
+
+          default :
+          std::cout << "Unsupported format!" << std::endl;
+    }
+
       //YU12
-      alprJpeg.run(jpeg_test->get_buffer(),  1, width, height);
+      //alprJpeg.run(jpeg_test->get_buffer(),  1, width, height);
+
+      //BGR
+      //alprJpeg.run(jpeg_test->get_buffer(),  3, width, height);
 
       //MJPEG
       /*

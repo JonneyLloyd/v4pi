@@ -13,8 +13,6 @@ alpr_jpeg.h
 /home/pi/FYP/Sources/launcher.cpp
 launcher.h
 /home/pi/FYP/Sources/launcher.h
-data_types_enum.h
-/home/pi/FYP/Sources/data_types_enum.h
 vector
 -
 chrono
@@ -59,6 +57,8 @@ v4l2_handler.h
 Headers/v4l2_handler.h
 alpr_jpeg.h
 Headers/alpr_jpeg.h
+data_types_enum.h
+Headers/data_types_enum.h
 opencv2/core/core.hpp
 -
 opencv2/highgui/highgui.hpp
