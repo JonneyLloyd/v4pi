@@ -10,7 +10,7 @@
 int Launcher::cam_test()
 {
     factory = new V4l2Factory();
-    data_type = DataTypes::Enum::YU12;
+    data_type = DataTypes::Enum::RGB;
     address = "/dev/video0";
     jpeg_test = factory->init(address, width, height, data_type);
     jpeg_test->init();
@@ -26,7 +26,8 @@ int Launcher::cam_test()
         break;
 
         case DataTypes::Enum::RGB  :
-        std::cout << "Unsupported format!" << std::endl;
+        test_pic = cv::Mat(height,width, CV_8UC3, jpeg_test->get_buffer());
+        cv::cvtColor(test_pic, test_pic, cv::COLOR_RGB2BGR);
         break;
 
         case DataTypes::Enum::BGR  :
@@ -72,7 +73,9 @@ int Launcher::cam_test()
           break;
 
           case DataTypes::Enum::RGB  :
-          std::cout << "Unsupported format!" << std::endl;
+          frame = cv::Mat(height,width, CV_8UC3, jpeg_test->get_buffer());
+          cv::cvtColor(frame, frame, cv::COLOR_RGB2BGR);
+          alprJpeg.run(frame);
           break;
 
           case DataTypes::Enum::BGR  :
@@ -82,18 +85,6 @@ int Launcher::cam_test()
           default :
           std::cout << "Unsupported format!" << std::endl;
     }
-
-      //YU12
-      //alprJpeg.run(jpeg_test->get_buffer(),  1, width, height);
-
-      //BGR
-      //alprJpeg.run(jpeg_test->get_buffer(),  3, width, height);
-
-      //MJPEG
-      /*
-      frame = (cv::imdecode(cv::Mat(600,800, CV_8UC3, jpeg_test->get_buffer()),1));
-      alprJpeg.run(frame);
-      */
 
       end= std::chrono::steady_clock::now();
       std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
@@ -110,9 +101,6 @@ int Launcher::cam_test()
       end= std::chrono::steady_clock::now();
       std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
     }
-
-
-
 
     jpeg_test->teardown();
     std::cout << "Exiting program" << std::endl;

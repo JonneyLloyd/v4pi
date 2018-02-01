@@ -88,7 +88,7 @@ void V4l2Handler::set_format(){
       break;
 
       case DataTypes::Enum::RGB  :
-      std::cout << "RGB not currently supported BGR selected "  << std::endl;
+      std::cout << "RGB format selected"  << std::endl;
       format.fmt.pix.pixelformat = V4L2_PIX_FMT_RGB24;
       break;
 
@@ -189,6 +189,7 @@ cv::Mat V4l2Handler::get_cv_mat(){
 
       case DataTypes::Enum::RGB  :
       mat = cv::Mat(get_height(), get_width(), CV_8UC3, get_buffer());
+      cv::cvtColor(mat, mat, cv::COLOR_RGB2BGR);
       break;
 
       case DataTypes::Enum::BGR  :
