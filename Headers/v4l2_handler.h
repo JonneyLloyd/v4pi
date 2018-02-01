@@ -17,6 +17,7 @@ class V4l2Handler : public V4l2Interface
 public:
   V4l2Handler(std::string address, int width, int height);
   V4l2Handler(std::string address, int width, int height, DataTypes::Enum data_type);
+  V4l2Handler(std::string address, int width, int height, DataTypes::Enum data_type, int framerate);
 
   void set_address(std::string address);
   std::string get_address();
@@ -48,6 +49,7 @@ private:
   std::string save_location;
   int width;
   int height;
+  int framerate;
   int fd;
   struct v4l2_capability cap;
   struct v4l2_format format;

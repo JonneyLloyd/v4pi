@@ -10,7 +10,7 @@ public:
   V4l2Interface * init();
   V4l2Interface * init(std::string address, int width, int height);
   V4l2Interface * init(std::string address, int width, int height, DataTypes::Enum data_type);
-
+  V4l2Interface * init(std::string address, int width, int height, DataTypes::Enum data_type, int framerate);
 };
 
 

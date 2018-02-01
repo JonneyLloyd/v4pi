@@ -14,3 +14,8 @@ V4l2Interface * V4l2Factory::init(std::string address, int width, int height, Da
   return new V4l2Handler(address, width, height, data_type);
 
 }
+
+V4l2Interface * V4l2Factory::init(std::string address, int width, int height, DataTypes::Enum data_type, int framerate){
+  return new V4l2Handler(address, width, height, data_type, framerate);
+
+}

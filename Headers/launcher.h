@@ -14,10 +14,12 @@ class Launcher
 {
 public:
     int cam_test();
-    int width = 640;
-    int height = 480;
+
 
 private:
+    int width = 640;
+    int height = 480;
+    int framerate = 60;
     V4l2Factory* factory;
     V4l2Interface* jpeg_test;
     AlprJpeg alprJpeg;

@@ -4,7 +4,8 @@ V4l2Handler::V4l2Handler(std::string address, int width, int height)
   : address{address},
     width{width},
     height{height},
-    data_type{DataTypes::Enum::YU12}
+    data_type{DataTypes::Enum::YU12},
+    framerate{30}
     {
       int nThreads;
       nThreads = omp_get_max_threads();
@@ -15,7 +16,20 @@ V4l2Handler::V4l2Handler(std::string address, int width, int height, DataTypes::
   : address{address},
     width{width},
     height{height},
-    data_type{data_type}
+    data_type{data_type},
+    framerate{30}
+    {
+      int nThreads;
+      nThreads = omp_get_max_threads();
+      omp_set_num_threads(nThreads);
+    }
+
+V4l2Handler::V4l2Handler(std::string address, int width, int height, DataTypes::Enum data_type, int framerate)
+  : address{address},
+    width{width},
+    height{height},
+    data_type{data_type},
+    framerate{framerate}
     {
       int nThreads;
       nThreads = omp_get_max_threads();
