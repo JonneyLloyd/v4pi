@@ -250,6 +250,48 @@ bool V4l2Handler::read_frame()
     return true;
 }
 
+bool V4l2Handler::snapshot()
+{
+    struct v4l2_buffer buf;
+    int i;
+    CLEAR(buf);
+
+    buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    buf.memory = V4L2_MEMORY_MMAP;
+    if (-1 == ioctl(fd, VIDIOC_DQBUF, &buf)) {
+        switch (errno) {
+            case EAGAIN:
+                return false;
+
+            case EIO:
+                /* ignore EIO. */
+
+                /* fall through */
+
+            default:
+                perror("VIDIOC_DQBUF");
+        }
+    }
+
+
+    fout = fopen("out.ppm", "w");
+    if (!fout) {
+          perror("Cannot open image");
+          exit(EXIT_FAILURE);
+    }
+    fprintf(fout, "P6\n%d %d 255\n",
+          format.fmt.pix.width, format.fmt.pix.height);
+    fwrite(buffers[buf.index].data, buf.bytesused, 1, fout);
+    fclose(fout);
+
+    if (-1 == ioctl(fd, VIDIOC_QBUF, &buf))
+        perror("VIDIOC_QBUF");
+
+    return true;
+}
+
+
+
 void V4l2Handler::start_capturing()
 {
     unsigned int i;

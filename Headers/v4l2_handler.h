@@ -38,6 +38,7 @@ public:
   void start_capturing();
   void teardown();
   bool read_frame();
+  bool snapshot();
   void set_framerate();
 
 private:
@@ -62,7 +63,7 @@ private:
   int buf_type;
   cv::Mat mat;
   DataTypes::Enum data_type;
-
+  FILE *fout;
 };
 
 

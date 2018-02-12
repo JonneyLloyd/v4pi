@@ -28,6 +28,7 @@ public:
   virtual void set_format() = 0;
   virtual void buffer_setup() = 0;
   virtual unsigned char *  get_buffer() = 0;
+  virtual bool snapshot() = 0;
   virtual cv::Mat get_cv_mat() = 0;
   virtual void save_jpeg(std::string save_location) = 0;
   virtual void init() = 0;

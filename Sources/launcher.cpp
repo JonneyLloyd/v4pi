@@ -3,6 +3,7 @@
 #include <vector>
 #include <chrono>
 
+
 //sudo modprobe bcm2835-v4l2
 //sudo sshfs -o allow_other,default_permissions pi@192.168.1.101:/home/pi/FYP/ /mnt/raspberry/
 
@@ -39,6 +40,9 @@ int Launcher::cam_test()
   }
 
     cv::imwrite("test.bmp", test_pic);  //sanity check
+
+    jpeg_test->snapshot();
+
 
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     std::chrono::steady_clock::time_point end= std::chrono::steady_clock::now();
