@@ -8,12 +8,14 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
+#include <chrono>
 
 
 class Launcher
 {
 public:
     int cam_test();
+    void snapshot_test();
 
 
 private:
@@ -24,9 +26,10 @@ private:
     V4l2Interface* jpeg_test;
     AlprJpeg alprJpeg;
     cv::Mat frame;
-    std::vector<int> compression_params;
     DataTypes::Enum data_type;
     std::string address;
+    std::chrono::steady_clock::time_point begin;
+    std::chrono::steady_clock::time_point end;
 };
 
 

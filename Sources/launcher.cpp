@@ -1,11 +1,27 @@
 #include "launcher.h"
 
-#include <vector>
-#include <chrono>
-
 
 //sudo modprobe bcm2835-v4l2
 //sudo sshfs -o allow_other,default_permissions pi@192.168.1.101:/home/pi/FYP/ /mnt/raspberry/
+
+void Launcher::snapshot_test()
+{
+  std::cout << std::endl << "Snapshot test" << std::endl;
+
+  begin = std::chrono::steady_clock::now();
+  jpeg_test->snapshot();
+  end= std::chrono::steady_clock::now();
+  std::cout << "Snapshot time = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl <<std::endl;
+
+  std::cout << std::endl << "CV Snapshot test" << std::endl;
+  begin = std::chrono::steady_clock::now();
+  frame = jpeg_test->get_cv_mat();
+  imwrite("imageCV.ppm", frame);
+  end= std::chrono::steady_clock::now();
+  std::cout << "CV Snapshot time = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl <<std::endl;
+
+}
+
 
 
 int Launcher::cam_test()
@@ -38,17 +54,16 @@ int Launcher::cam_test()
         default :
         std::cout << "Unsupported format!" << std::endl;
   }
-
     cv::imwrite("test.bmp", test_pic);  //sanity check
 
-    jpeg_test->snapshot();
+    //Compare snapshot function
+    if (data_type  == DataTypes::Enum::RGB)
+      snapshot_test();
 
 
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-    std::chrono::steady_clock::time_point end= std::chrono::steady_clock::now();
+    begin = std::chrono::steady_clock::now();
     int time_diff = 0, count = 0;
     unsigned char * test_frame;
-    begin = std::chrono::steady_clock::now();
     while (time_diff <= 1000){
 
       test_frame = jpeg_test->get_buffer();

@@ -13,10 +13,6 @@ alpr_jpeg.h
 /home/pi/FYP/Sources/launcher.cpp
 launcher.h
 /home/pi/FYP/Sources/launcher.h
-vector
--
-chrono
--
 
 /home/pi/FYP/Sources/launcher_cv.cpp
 launcher_cv.h
@@ -64,6 +60,8 @@ opencv2/core/core.hpp
 opencv2/highgui/highgui.hpp
 -
 opencv2/imgproc/imgproc.hpp
+-
+chrono
 -
 
 Headers/launcher_cv.h
