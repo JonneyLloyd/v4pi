@@ -63,6 +63,8 @@ opencv2/imgproc/imgproc.hpp
 -
 chrono
 -
+vector
+-
 
 Headers/launcher_cv.h
 alpr_jpeg.h

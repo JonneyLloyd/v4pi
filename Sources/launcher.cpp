@@ -22,6 +22,23 @@ void Launcher::snapshot_test()
 
 }
 
+void Launcher::jpeg_snapshot_test()
+{
+  std::cout << std::endl << "Snapshot test" << std::endl;
+  begin = std::chrono::steady_clock::now();
+
+  jpeg_test->save_jpeg("out.jpg");
+  end = std::chrono::steady_clock::now();
+  std::cout << "Snapshot time = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl <<std::endl;
+
+  std::cout << std::endl << "CV Snapshot test" << std::endl;
+  begin = std::chrono::steady_clock::now();
+  frame = jpeg_test->get_cv_mat();
+  imwrite("imageCV.jpg", frame);
+  end = std::chrono::steady_clock::now();
+  std::cout << "CV Snapshot time = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl <<std::endl;
+}
+
 
 
 int Launcher::cam_test()
@@ -59,7 +76,8 @@ int Launcher::cam_test()
     //Compare snapshot function
     if (data_type  == DataTypes::Enum::RGB)
       snapshot_test();
-
+    if (data_type  == DataTypes::Enum::MJPEG)
+      jpeg_snapshot_test();
 
     begin = std::chrono::steady_clock::now();
     int time_diff = 0, count = 0;

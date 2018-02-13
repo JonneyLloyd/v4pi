@@ -33,7 +33,7 @@ public:
   void buffer_setup();
   unsigned char * get_buffer();
   cv::Mat get_cv_mat();
-  void save_jpeg(std::string save_location);
+  bool save_jpeg(std::string save_location);
   void init();
   void start_capturing();
   void teardown();

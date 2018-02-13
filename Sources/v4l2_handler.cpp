@@ -198,7 +198,7 @@ cv::Mat V4l2Handler::get_cv_mat(){
       break;
 
       case DataTypes::Enum::MJPEG  :
-      mat = cv::imdecode(cv::Mat(600,800, CV_8UC3, get_buffer()),1);
+      mat = cv::imdecode(cv::Mat(get_height(),get_width(), CV_8UC3, get_buffer()),1);
       break;
 
       case DataTypes::Enum::RGB  :
@@ -262,17 +262,12 @@ bool V4l2Handler::snapshot()
         switch (errno) {
             case EAGAIN:
                 return false;
-
             case EIO:
                 /* ignore EIO. */
-
-                /* fall through */
-
             default:
                 perror("VIDIOC_DQBUF");
         }
     }
-
 
     fout = fopen("out.ppm", "w");
     if (!fout) {
@@ -313,16 +308,37 @@ void V4l2Handler::start_capturing()
         perror("VIDIOC_STREAMON");
 }
 
-void V4l2Handler::save_jpeg(std::string save_location){
+bool V4l2Handler::save_jpeg(std::string save_location)
+{
   int jpgfile;
   if((jpgfile = open(save_location.c_str(), O_WRONLY | O_CREAT, 0660)) < 0){
       perror("open");
       exit(1);
   }
+    struct v4l2_buffer buf;
+    int i;
+    CLEAR(buf);
 
-  write(jpgfile, buffer_start, bufferinfo.length);
-  close(jpgfile);
+    buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    buf.memory = V4L2_MEMORY_MMAP;
+    if (-1 == ioctl(fd, VIDIOC_DQBUF, &buf)) {
+        switch (errno) {
+            case EAGAIN:
+                return false;
+            case EIO:
+                /* ignore EIO. */
+            default:
+                perror("VIDIOC_DQBUF");
+        }
+    }
 
+    write(jpgfile, buffers[buf.index].data, buf.bytesused);
+    close(jpgfile);
+
+    if (-1 == ioctl(fd, VIDIOC_QBUF, &buf))
+        perror("VIDIOC_QBUF");
+
+    return true;
 }
 
 void V4l2Handler::init(){
