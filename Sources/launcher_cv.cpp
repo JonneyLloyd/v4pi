@@ -14,15 +14,21 @@ int LauncherCV::cam_test()
     }
     compression_params.push_back(cv::IMWRITE_JPEG_QUALITY );
     cv::Mat frame;
-
+    std::cout << "Snapshot test "  << std::endl;
     cap.set(CV_CAP_PROP_FRAME_WIDTH, width);
     cap.set(CV_CAP_PROP_FRAME_HEIGHT, height);
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    std::chrono::steady_clock::time_point end;
+
     cap >> frame; // get a new frame from camera
     imwrite("imageCV.jpg", frame, compression_params); //sanity check
 
+    end= std::chrono::steady_clock::now();
+    std::cout << "Snapshot test, pure CV = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
 
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-    std::chrono::steady_clock::time_point end= std::chrono::steady_clock::now();
+
+    begin = std::chrono::steady_clock::now();
+    end= std::chrono::steady_clock::now();
     int time_diff = 0, count = 0;
     unsigned char * test_frame;
     while (time_diff < 1000){

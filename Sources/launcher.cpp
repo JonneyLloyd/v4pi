@@ -74,7 +74,7 @@ int Launcher::cam_test()
     cv::imwrite("test.bmp", test_pic);  //sanity check
 
     //Compare snapshot function
-    if (data_type  == DataTypes::Enum::RGB)
+    if (data_type  == DataTypes::Enum::RGB || data_type  == DataTypes::Enum::BGR)
       snapshot_test();
     if (data_type  == DataTypes::Enum::MJPEG)
       jpeg_snapshot_test();
