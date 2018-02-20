@@ -39,12 +39,26 @@ void Launcher::jpeg_snapshot_test()
   std::cout << "CV Snapshot time = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl <<std::endl;
 }
 
+void Launcher::video_test()
+{
+  std::cout << std::endl << "Video test" << std::endl;
+  cv::VideoWriter video("out.avi",CV_FOURCC('D','I','V','X'),60, cv::Size(width, height),true);
+  int count = 0;
+  while (count < 200){
+    frame = jpeg_test->get_cv_mat();
+    video.write(frame);
+
+    count++;
+  }
+  std::cout << std::endl << "Video test complete" << std::endl;
+}
+
 
 
 int Launcher::cam_test()
 {
     factory = new V4l2Factory();
-    data_type = DataTypes::Enum::RGB;
+    data_type = DataTypes::Enum::BGR;
     address = "/dev/video0";
     jpeg_test = factory->init(address, width, height, data_type, framerate);
     jpeg_test->init();
@@ -78,6 +92,8 @@ int Launcher::cam_test()
       snapshot_test();
     if (data_type  == DataTypes::Enum::MJPEG)
       jpeg_snapshot_test();
+
+    video_test();
 
     begin = std::chrono::steady_clock::now();
     int time_diff = 0, count = 0;

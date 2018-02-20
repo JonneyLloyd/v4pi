@@ -17,6 +17,7 @@ public:
     int cam_test();
     void snapshot_test();
     void jpeg_snapshot_test();
+    void video_test();
 
 private:
     int width = 640;
