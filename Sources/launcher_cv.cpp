@@ -12,11 +12,19 @@ int LauncherCV::cam_test()
          std::cout << "Cannot open the web cam" << std::endl;
          return -1;
     }
-    compression_params.push_back(cv::IMWRITE_JPEG_QUALITY );
     cv::Mat frame;
-    std::cout << "Snapshot test "  << std::endl;
     cap.set(CV_CAP_PROP_FRAME_WIDTH, width);
     cap.set(CV_CAP_PROP_FRAME_HEIGHT, height);
+    //compression_params.push_back(CV_IMWRITE_PXM_BINARY);
+    //compression_params.push_back(1);
+    compression_params.push_back(cv::IMWRITE_JPEG_QUALITY );
+
+    cap >> frame; // get a new frame from camera
+    imwrite("imageCV.jpg", frame, compression_params); //sanity check
+
+
+    std::cout << "Snapshot test "  << std::endl;
+
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     std::chrono::steady_clock::time_point end;
 
@@ -25,6 +33,20 @@ int LauncherCV::cam_test()
 
     end= std::chrono::steady_clock::now();
     std::cout << "Snapshot test, pure CV = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
+
+
+
+    std::cout << "Snapshot test "  << std::endl;
+
+    begin = std::chrono::steady_clock::now();
+
+
+    cap >> frame; // get a new frame from camera
+    imwrite("imageCV.jpg", frame, compression_params); //sanity check
+
+    end= std::chrono::steady_clock::now();
+    std::cout << "Snapshot test, pure CV = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
+
 
 
     begin = std::chrono::steady_clock::now();
@@ -54,6 +76,7 @@ int LauncherCV::cam_test()
     end= std::chrono::steady_clock::now();
     std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
   }
+
     std::cout << "Exiting program" << std::endl;
     return 1;
 

@@ -58,7 +58,7 @@ void Launcher::video_test()
 int Launcher::cam_test()
 {
     factory = new V4l2Factory();
-    data_type = DataTypes::Enum::BGR;
+    data_type = DataTypes::Enum::RGB;
     address = "/dev/video0";
     jpeg_test = factory->init(address, width, height, data_type, framerate);
     jpeg_test->init();
