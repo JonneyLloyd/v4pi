@@ -21,6 +21,8 @@ public:
 
   void set_address(std::string address);
   std::string get_address();
+  int get_framerate();
+  void set_framerate(int framerate);
   void set_width(int width);
   int get_width();
   void set_height(int height);
@@ -39,7 +41,7 @@ public:
   void teardown();
   bool read_frame();
   bool snapshot();
-  void set_framerate();
+  void set_v4l2_framerate();
 
 private:
   struct buffer {

@@ -44,6 +44,14 @@ std::string V4l2Handler::get_address(){
   return this->address;
 }
 
+void V4l2Handler::set_framerate(int framerate){
+  this->framerate = framerate;
+}
+
+int V4l2Handler::get_framerate(){
+  return this->framerate;
+}
+
 void V4l2Handler::set_width(int width){
   this->width = width;
 }
@@ -127,7 +135,7 @@ void V4l2Handler::set_format(){
   }
 }
 
-void V4l2Handler::set_framerate()
+void V4l2Handler::set_v4l2_framerate()
 {
 
     struct v4l2_streamparm parm;
@@ -136,7 +144,7 @@ void V4l2Handler::set_framerate()
     parm.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
     //reversed due to driver issue
     parm.parm.capture.timeperframe.numerator = 1;
-    parm.parm.capture.timeperframe.denominator = 60;
+    parm.parm.capture.timeperframe.denominator = get_framerate();
 
     if(ioctl(fd, VIDIOC_S_PARM, &parm) < 0){
         perror("VIDIOC_S_FMT");
@@ -344,7 +352,7 @@ bool V4l2Handler::save_jpeg(std::string save_location)
 void V4l2Handler::init(){
   open_device();
   get_device_cap(fd);
-  set_framerate();
+  set_v4l2_framerate();
   set_format();
   buffer_setup();
   start_capturing();

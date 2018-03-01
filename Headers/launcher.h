@@ -20,9 +20,9 @@ public:
     void video_test();
 
 private:
-    int width = 640;
-    int height = 480;
-    int framerate = 60;
+    int width = 1280;
+    int height = 720;
+    int framerate = 30;
     V4l2Factory* factory;
     V4l2Interface* jpeg_test;
     AlprJpeg alprJpeg;

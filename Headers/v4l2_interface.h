@@ -19,6 +19,8 @@ class V4l2Interface{
 public:
   virtual void set_address(std::string address) = 0;
   virtual std::string get_address() = 0;
+  virtual int get_framerate() = 0;
+  virtual void set_framerate(int framerate) = 0;
   virtual void set_width(int width) = 0;
   virtual int get_width() = 0;
   virtual void set_height(int height) = 0;
@@ -33,7 +35,7 @@ public:
   virtual bool save_jpeg(std::string save_location) = 0;
   virtual void init() = 0;
   virtual void teardown() = 0;
-  virtual void set_framerate() = 0;
+  virtual void set_v4l2_framerate() = 0;
 };
 
 
