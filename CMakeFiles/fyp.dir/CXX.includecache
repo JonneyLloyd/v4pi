@@ -10,6 +10,10 @@
 alpr_jpeg.h
 /home/pi/FYP/Sources/alpr_jpeg.h
 
+/home/pi/FYP/Sources/demo_day.cpp
+demo_day.h
+/home/pi/FYP/Sources/demo_day.h
+
 /home/pi/FYP/Sources/launcher.cpp
 launcher.h
 /home/pi/FYP/Sources/launcher.h
@@ -35,6 +39,8 @@ launcher.h
 /home/pi/FYP/launcher.h
 launcher_cv.h
 /home/pi/FYP/launcher_cv.h
+demo_day.h
+/home/pi/FYP/demo_day.h
 
 Headers/alpr_jpeg.h
 opencv2/core/core.hpp
@@ -45,6 +51,26 @@ alpr.h
 -
 
 Headers/data_types_enum.h
+
+Headers/demo_day.h
+v4l2_factory.h
+Headers/v4l2_factory.h
+v4l2_handler.h
+Headers/v4l2_handler.h
+alpr_jpeg.h
+Headers/alpr_jpeg.h
+data_types_enum.h
+Headers/data_types_enum.h
+opencv2/core/core.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+opencv2/imgproc/imgproc.hpp
+-
+chrono
+-
+vector
+-
 
 Headers/launcher.h
 v4l2_factory.h

@@ -4,6 +4,14 @@
 CMakeFiles/fyp.dir/Sources/alpr_jpeg.cpp.o
  /home/pi/FYP/Sources/alpr_jpeg.cpp
  Headers/alpr_jpeg.h
+CMakeFiles/fyp.dir/Sources/demo_day.cpp.o
+ /home/pi/FYP/Sources/demo_day.cpp
+ Headers/alpr_jpeg.h
+ Headers/data_types_enum.h
+ Headers/demo_day.h
+ Headers/v4l2_factory.h
+ Headers/v4l2_handler.h
+ Headers/v4l2_interface.h
 CMakeFiles/fyp.dir/Sources/launcher.cpp.o
  /home/pi/FYP/Sources/launcher.cpp
  Headers/alpr_jpeg.h
@@ -31,6 +39,7 @@ CMakeFiles/fyp.dir/main.cpp.o
  /home/pi/FYP/main.cpp
  Headers/alpr_jpeg.h
  Headers/data_types_enum.h
+ Headers/demo_day.h
  Headers/launcher.h
  Headers/launcher_cv.h
  Headers/v4l2_factory.h

@@ -81,9 +81,33 @@ CMakeFiles/fyp.dir/Sources/alpr_jpeg.cpp.o.provides: CMakeFiles/fyp.dir/Sources/
 CMakeFiles/fyp.dir/Sources/alpr_jpeg.cpp.o.provides.build: CMakeFiles/fyp.dir/Sources/alpr_jpeg.cpp.o
 
 
+CMakeFiles/fyp.dir/Sources/demo_day.cpp.o: CMakeFiles/fyp.dir/flags.make
+CMakeFiles/fyp.dir/Sources/demo_day.cpp.o: Sources/demo_day.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/fyp.dir/Sources/demo_day.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/fyp.dir/Sources/demo_day.cpp.o -c /home/pi/FYP/Sources/demo_day.cpp
+
+CMakeFiles/fyp.dir/Sources/demo_day.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/fyp.dir/Sources/demo_day.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/FYP/Sources/demo_day.cpp > CMakeFiles/fyp.dir/Sources/demo_day.cpp.i
+
+CMakeFiles/fyp.dir/Sources/demo_day.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/fyp.dir/Sources/demo_day.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/FYP/Sources/demo_day.cpp -o CMakeFiles/fyp.dir/Sources/demo_day.cpp.s
+
+CMakeFiles/fyp.dir/Sources/demo_day.cpp.o.requires:
+
+.PHONY : CMakeFiles/fyp.dir/Sources/demo_day.cpp.o.requires
+
+CMakeFiles/fyp.dir/Sources/demo_day.cpp.o.provides: CMakeFiles/fyp.dir/Sources/demo_day.cpp.o.requires
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/demo_day.cpp.o.provides.build
+.PHONY : CMakeFiles/fyp.dir/Sources/demo_day.cpp.o.provides
+
+CMakeFiles/fyp.dir/Sources/demo_day.cpp.o.provides.build: CMakeFiles/fyp.dir/Sources/demo_day.cpp.o
+
+
 CMakeFiles/fyp.dir/Sources/launcher.cpp.o: CMakeFiles/fyp.dir/flags.make
 CMakeFiles/fyp.dir/Sources/launcher.cpp.o: Sources/launcher.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/fyp.dir/Sources/launcher.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/fyp.dir/Sources/launcher.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/fyp.dir/Sources/launcher.cpp.o -c /home/pi/FYP/Sources/launcher.cpp
 
 CMakeFiles/fyp.dir/Sources/launcher.cpp.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/fyp.dir/Sources/launcher.cpp.o.provides.build: CMakeFiles/fyp.dir/Sou
 
 CMakeFiles/fyp.dir/Sources/launcher_cv.cpp.o: CMakeFiles/fyp.dir/flags.make
 CMakeFiles/fyp.dir/Sources/launcher_cv.cpp.o: Sources/launcher_cv.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/fyp.dir/Sources/launcher_cv.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/fyp.dir/Sources/launcher_cv.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/fyp.dir/Sources/launcher_cv.cpp.o -c /home/pi/FYP/Sources/launcher_cv.cpp
 
 CMakeFiles/fyp.dir/Sources/launcher_cv.cpp.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/fyp.dir/Sources/launcher_cv.cpp.o.provides.build: CMakeFiles/fyp.dir/
 
 CMakeFiles/fyp.dir/Sources/v4l2_factory.cpp.o: CMakeFiles/fyp.dir/flags.make
 CMakeFiles/fyp.dir/Sources/v4l2_factory.cpp.o: Sources/v4l2_factory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/fyp.dir/Sources/v4l2_factory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/fyp.dir/Sources/v4l2_factory.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/fyp.dir/Sources/v4l2_factory.cpp.o -c /home/pi/FYP/Sources/v4l2_factory.cpp
 
 CMakeFiles/fyp.dir/Sources/v4l2_factory.cpp.i: cmake_force
@@ -155,7 +179,7 @@ CMakeFiles/fyp.dir/Sources/v4l2_factory.cpp.o.provides.build: CMakeFiles/fyp.dir
 
 CMakeFiles/fyp.dir/Sources/v4l2_handler.cpp.o: CMakeFiles/fyp.dir/flags.make
 CMakeFiles/fyp.dir/Sources/v4l2_handler.cpp.o: Sources/v4l2_handler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/fyp.dir/Sources/v4l2_handler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/fyp.dir/Sources/v4l2_handler.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/fyp.dir/Sources/v4l2_handler.cpp.o -c /home/pi/FYP/Sources/v4l2_handler.cpp
 
 CMakeFiles/fyp.dir/Sources/v4l2_handler.cpp.i: cmake_force
@@ -179,7 +203,7 @@ CMakeFiles/fyp.dir/Sources/v4l2_handler.cpp.o.provides.build: CMakeFiles/fyp.dir
 
 CMakeFiles/fyp.dir/main.cpp.o: CMakeFiles/fyp.dir/flags.make
 CMakeFiles/fyp.dir/main.cpp.o: main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/fyp.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/fyp.dir/main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/fyp.dir/main.cpp.o -c /home/pi/FYP/main.cpp
 
 CMakeFiles/fyp.dir/main.cpp.i: cmake_force
@@ -204,6 +228,7 @@ CMakeFiles/fyp.dir/main.cpp.o.provides.build: CMakeFiles/fyp.dir/main.cpp.o
 # Object files for target fyp
 fyp_OBJECTS = \
 "CMakeFiles/fyp.dir/Sources/alpr_jpeg.cpp.o" \
+"CMakeFiles/fyp.dir/Sources/demo_day.cpp.o" \
 "CMakeFiles/fyp.dir/Sources/launcher.cpp.o" \
 "CMakeFiles/fyp.dir/Sources/launcher_cv.cpp.o" \
 "CMakeFiles/fyp.dir/Sources/v4l2_factory.cpp.o" \
@@ -214,6 +239,7 @@ fyp_OBJECTS = \
 fyp_EXTERNAL_OBJECTS =
 
 fyp: CMakeFiles/fyp.dir/Sources/alpr_jpeg.cpp.o
+fyp: CMakeFiles/fyp.dir/Sources/demo_day.cpp.o
 fyp: CMakeFiles/fyp.dir/Sources/launcher.cpp.o
 fyp: CMakeFiles/fyp.dir/Sources/launcher_cv.cpp.o
 fyp: CMakeFiles/fyp.dir/Sources/v4l2_factory.cpp.o
@@ -240,7 +266,7 @@ fyp: /usr/lib/arm-linux-gnueabihf/libopencv_imgproc.so.2.4.9
 fyp: /usr/lib/arm-linux-gnueabihf/libopencv_flann.so.2.4.9
 fyp: /usr/lib/arm-linux-gnueabihf/libopencv_core.so.2.4.9
 fyp: CMakeFiles/fyp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable fyp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/FYP/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable fyp"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/fyp.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -249,6 +275,7 @@ CMakeFiles/fyp.dir/build: fyp
 .PHONY : CMakeFiles/fyp.dir/build
 
 CMakeFiles/fyp.dir/requires: CMakeFiles/fyp.dir/Sources/alpr_jpeg.cpp.o.requires
+CMakeFiles/fyp.dir/requires: CMakeFiles/fyp.dir/Sources/demo_day.cpp.o.requires
 CMakeFiles/fyp.dir/requires: CMakeFiles/fyp.dir/Sources/launcher.cpp.o.requires
 CMakeFiles/fyp.dir/requires: CMakeFiles/fyp.dir/Sources/launcher_cv.cpp.o.requires
 CMakeFiles/fyp.dir/requires: CMakeFiles/fyp.dir/Sources/v4l2_factory.cpp.o.requires

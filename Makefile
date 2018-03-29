@@ -150,6 +150,33 @@ Sources/alpr_jpeg.cpp.s:
 	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/alpr_jpeg.cpp.s
 .PHONY : Sources/alpr_jpeg.cpp.s
 
+Sources/demo_day.o: Sources/demo_day.cpp.o
+
+.PHONY : Sources/demo_day.o
+
+# target to build an object file
+Sources/demo_day.cpp.o:
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/demo_day.cpp.o
+.PHONY : Sources/demo_day.cpp.o
+
+Sources/demo_day.i: Sources/demo_day.cpp.i
+
+.PHONY : Sources/demo_day.i
+
+# target to preprocess a source file
+Sources/demo_day.cpp.i:
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/demo_day.cpp.i
+.PHONY : Sources/demo_day.cpp.i
+
+Sources/demo_day.s: Sources/demo_day.cpp.s
+
+.PHONY : Sources/demo_day.s
+
+# target to generate assembly for a file
+Sources/demo_day.cpp.s:
+	$(MAKE) -f CMakeFiles/fyp.dir/build.make CMakeFiles/fyp.dir/Sources/demo_day.cpp.s
+.PHONY : Sources/demo_day.cpp.s
+
 Sources/launcher.o: Sources/launcher.cpp.o
 
 .PHONY : Sources/launcher.o
@@ -297,6 +324,9 @@ help:
 	@echo "... Sources/alpr_jpeg.o"
 	@echo "... Sources/alpr_jpeg.i"
 	@echo "... Sources/alpr_jpeg.s"
+	@echo "... Sources/demo_day.o"
+	@echo "... Sources/demo_day.i"
+	@echo "... Sources/demo_day.s"
 	@echo "... Sources/launcher.o"
 	@echo "... Sources/launcher.i"
 	@echo "... Sources/launcher.s"

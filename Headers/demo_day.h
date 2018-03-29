@@ -1,5 +1,5 @@
-#ifndef LAUNCHER_H
-#define LAUNCHER_H
+#ifndef DEMODAY_H
+#define DEMODAY_H
 
 #include "v4l2_factory.h"
 #include "v4l2_handler.h"
@@ -11,13 +11,15 @@
 #include <chrono>
 #include <vector>
 
-class Launcher
+class DemoDay
 {
 public:
     int cam_test();
     void snapshot_test();
     void jpeg_snapshot_test();
     void video_test();
+    void alpr();
+    void cv_snap();
 
 private:
     int width = 640;
@@ -35,4 +37,4 @@ private:
 };
 
 
-#endif // LAUNCHER_H
+#endif // DEMODAY_H
