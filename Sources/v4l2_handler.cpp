@@ -206,7 +206,8 @@ cv::Mat V4l2Handler::get_cv_mat(){
       break;
 
       case DataTypes::Enum::MJPEG  :
-      mat = cv::imdecode(cv::Mat(get_height(),get_width(), CV_8UC3, get_buffer()),1);
+      mat = cv::imdecode(cv::Mat(get_height(), get_width(), CV_8UC3, get_buffer()),1);
+
       break;
 
       case DataTypes::Enum::RGB  :
@@ -314,6 +315,8 @@ void V4l2Handler::start_capturing()
     type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
     if (-1 == ioctl(fd, VIDIOC_STREAMON, &type))
         perror("VIDIOC_STREAMON");
+
+
 }
 
 bool V4l2Handler::save_jpeg(std::string save_location)
@@ -365,4 +368,40 @@ void V4l2Handler::teardown(){
      if (-1 == munmap(buffers[i].data, buffers[i].size))
          perror("munmap");
   free(buffers);
+}
+
+void V4l2Handler::sighthound(){
+  struct curl_slist *headerlist=NULL;
+  FILE *fd2 = fopen("out.jpg", "rb");
+  struct stat file_info;
+  fstat(fileno(fd2), &file_info);
+  CURL *curl;
+  CURLcode res;
+  /* get a curl handle */
+  curl = curl_easy_init();
+  if(curl) {
+    /* First set the URL that is about to receive our POST. This URL can
+       just as well be a https:// URL if that is what should receive the
+       data. */
+    headerlist = curl_slist_append( headerlist, "Content-Type: application/json");
+    headerlist = curl_slist_append( headerlist, "X-Access-Token: 8nOVdHKtk2Pf7TnDIVRiLyTbdLsBFuth6mr4");
+    curl_easy_setopt(curl, CURLOPT_URL, "https://dev.sighthoundapi.com/v1/detections?type=face,person&faceOption=landmark,gender");
+    curl_easy_setopt(curl, CURLOPT_HEADER, headerlist);
+    curl_easy_setopt(curl, CURLOPT_POST, 1L);
+    curl_easy_setopt(curl, CURLOPT_READDATA, fd2);
+    curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, (curl_off_t)file_info.st_size);
+
+
+    /* Perform the request, res will get the return code */
+    res = curl_easy_perform(curl);
+    /* Check for errors */
+    if(res != CURLE_OK)
+      fprintf(stderr, "curl_easy_perform() failed: %s\n",
+              curl_easy_strerror(res));
+
+    /* always cleanup */
+    curl_easy_cleanup(curl);
+
+}
+curl_global_cleanup();
 }

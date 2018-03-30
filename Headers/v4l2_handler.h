@@ -9,7 +9,9 @@
 #include <assert.h>
 #include <iostream>
 #include <omp.h>
-
+#include <curl/curl.h>
+#include <unistd.h>
+#include <sys/stat.h>
 
 
 class V4l2Handler : public V4l2Interface
@@ -42,6 +44,7 @@ public:
   bool read_frame();
   bool snapshot();
   void set_v4l2_framerate();
+  void sighthound();
 
 private:
   struct buffer {

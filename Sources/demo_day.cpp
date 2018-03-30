@@ -79,7 +79,7 @@ void DemoDay::alpr(){
 void DemoDay::video_test()
 {
   std::cout << std::endl << "Video test" << std::endl;
-  cv::VideoWriter video("out.avi",CV_FOURCC('D','I','V','X'),60, cv::Size(width, height),true);
+  cv::VideoWriter video("out.avi",CV_FOURCC('D','I','V','X'),24, cv::Size(width, height),true);
   int count = 0;
   while (count < 200){
     frame = jpeg_test->get_cv_mat();
@@ -225,10 +225,14 @@ int DemoDay::cam_test()
   }
   std::cout << "Framerate test " <<  count << " FPS" << std::endl;
 
+
+  std::cout << std::endl << "**** V4Pi Video demo ****" << std::endl<< std::endl;
+  video_test();
+
+  std::cout << std::endl << "**** V4Pi sighthound demo ****" << std::endl<< std::endl;
+  jpeg_test->sighthound();
+
   jpeg_test->teardown();
-
-  //video_test();
-
 
   return 0;
 }

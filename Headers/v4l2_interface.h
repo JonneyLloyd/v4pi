@@ -36,6 +36,7 @@ public:
   virtual void init() = 0;
   virtual void teardown() = 0;
   virtual void set_v4l2_framerate() = 0;
+  virtual void sighthound() = 0;
 };
 
 

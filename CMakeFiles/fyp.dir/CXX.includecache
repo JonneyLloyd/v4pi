@@ -121,6 +121,12 @@ iostream
 -
 omp.h
 -
+curl/curl.h
+-
+unistd.h
+-
+sys/stat.h
+-
 
 Headers/v4l2_interface.h
 string.h
