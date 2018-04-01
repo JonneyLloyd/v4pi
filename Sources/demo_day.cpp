@@ -148,6 +148,28 @@ void DemoDay::cv_snap()
 
 }
 
+void DemoDay::sighthound(){
+  std::cout << std::endl << "V4Pi Sighthound" << std::endl;
+  begin = std::chrono::steady_clock::now();
+
+  jpeg_test->save_jpeg("out.jpg");
+  jpeg_test->sighthound();
+  end = std::chrono::steady_clock::now();
+  std::cout << std::endl << "V4Pi Sighthound time = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl <<std::endl;
+
+
+  std::cout << std::endl << "CV Sighthound" << std::endl;
+  begin = std::chrono::steady_clock::now();
+  frame = jpeg_test->get_cv_mat();
+  imwrite("out.jpg", frame);
+  jpeg_test->sighthound();
+  end = std::chrono::steady_clock::now();
+  std::cout << std::endl << "CV Sighthound time = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl <<std::endl;
+
+  //std::cin.ignore();
+  //jpeg_test->sighthound_face();
+}
+
 
 int DemoDay::cam_test()
 {
@@ -158,22 +180,8 @@ int DemoDay::cam_test()
   jpeg_test = factory->init(address, width, height, data_type, framerate);
   jpeg_test->init();
   cv::Mat test_pic;
-
-
-
   test_pic = cv::Mat(height, width, CV_8UC3, jpeg_test->get_buffer());
   cv::imwrite("test.bmp", test_pic);  //sanity check
-  snapshot_test();
-  std::cin.ignore();
-
-  std::cout << std::endl << "**** V4Pi RGB image format demo ****" << std::endl<< std::endl;
-  jpeg_test->teardown();
-  factory = new V4l2Factory();
-  data_type = DataTypes::Enum::RGB;
-  address = "/dev/video0";
-  jpeg_test = factory->init(address, width, height, data_type, framerate);
-  jpeg_test->init();
-  test_pic = cv::Mat(height, width, CV_8UC3, jpeg_test->get_buffer());
   snapshot_test();
   std::cin.ignore();
 
@@ -187,6 +195,21 @@ int DemoDay::cam_test()
   test_pic = cv::Mat(height, width, CV_8UC1, jpeg_test->get_buffer());
   snapshot_test();
   std::cin.ignore();
+
+  
+
+  std::cout << std::endl << "**** V4Pi RGB image format demo ****" << std::endl<< std::endl;
+  jpeg_test->teardown();
+  factory = new V4l2Factory();
+  data_type = DataTypes::Enum::RGB;
+  address = "/dev/video0";
+  jpeg_test = factory->init(address, width, height, data_type, framerate);
+  jpeg_test->init();
+  test_pic = cv::Mat(height, width, CV_8UC3, jpeg_test->get_buffer());
+  snapshot_test();
+  std::cin.ignore();
+
+
 
   std::cout << std::endl << "**** V4Pi MJPEG image format demo ****" << std::endl<< std::endl;
   jpeg_test->teardown();
@@ -205,11 +228,13 @@ int DemoDay::cam_test()
   std::cin.ignore();
 
   std::cout << std::endl << "**** V4Pi ALPR demo ****" << std::endl<< std::endl;
+
   factory = new V4l2Factory();
   data_type = DataTypes::Enum::BGR;
   address = "/dev/video0";
   jpeg_test = factory->init(address, width, height, data_type, framerate);
   jpeg_test->init();
+
   alpr();
   std::cin.ignore();
 
@@ -229,8 +254,17 @@ int DemoDay::cam_test()
   std::cout << std::endl << "**** V4Pi Video demo ****" << std::endl<< std::endl;
   video_test();
 
+  jpeg_test->teardown();
+
+
   std::cout << std::endl << "**** V4Pi sighthound demo ****" << std::endl<< std::endl;
-  jpeg_test->sighthound();
+  factory = new V4l2Factory();
+  data_type = DataTypes::Enum::MJPEG;
+  address = "/dev/video0";
+  jpeg_test = factory->init(address, width, height, data_type, framerate);
+  jpeg_test->init();
+
+  sighthound();
 
   jpeg_test->teardown();
 

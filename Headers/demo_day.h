@@ -20,6 +20,7 @@ public:
     void video_test();
     void alpr();
     void cv_snap();
+    void sighthound();
 
 private:
     int width = 640;

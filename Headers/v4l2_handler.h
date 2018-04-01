@@ -45,6 +45,7 @@ public:
   bool snapshot();
   void set_v4l2_framerate();
   void sighthound();
+  void sighthound_face();
 
 private:
   struct buffer {
