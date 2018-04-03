@@ -93,7 +93,7 @@ int Launcher::cam_test()
     if (data_type  == DataTypes::Enum::MJPEG)
       jpeg_snapshot_test();
 
-    video_test();
+    //video_test();
 
     begin = std::chrono::steady_clock::now();
     int time_diff = 0, count = 0;
@@ -109,7 +109,7 @@ int Launcher::cam_test()
 
 
     int x = 0;
-    std::cout << "Raw data " << std::endl;
+    std::cout << std::endl << "**** V4Pi ALPR demo ****" << std::endl<< std::endl;
     while(x < 5){
       x++;
       begin = std::chrono::steady_clock::now();
@@ -142,9 +142,9 @@ int Launcher::cam_test()
       end= std::chrono::steady_clock::now();
       std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
     }
-
+    std::cin.ignore();
     x = 0;
-    std::cout << "OpenCV conversion " << std::endl;
+    std::cout << std::endl << "**** V4Pi OpenCV ALPR demo ****" << std::endl<< std::endl;
     while(x < 5){
       x++;
       begin = std::chrono::steady_clock::now();

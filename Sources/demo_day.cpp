@@ -44,9 +44,8 @@ void DemoDay::alpr(){
   std::cout << "Raw data " << std::endl;
   while(x < 5){
     x++;
-    begin = std::chrono::steady_clock::now();
     std::cout << "Loop start" << std::endl;
-
+    begin = std::chrono::steady_clock::now();
     switch(data_type) {
         case DataTypes::Enum::YU12  :
         alprJpeg.run(jpeg_test->get_buffer(),  1, width, height);
@@ -117,6 +116,8 @@ void DemoDay::cv_snap()
     std::cout << "**** Snapshot test, pure CV **** = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
 
     std::cin.ignore();
+
+    /*
     std::cout << "**** OpenCV APLR test ****" << std::endl  << std::endl;
     int x = 0;
 
@@ -130,6 +131,8 @@ void DemoDay::cv_snap()
     end= std::chrono::steady_clock::now();
     std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
   }
+*/
+
 
   begin = std::chrono::steady_clock::now();
   end= std::chrono::steady_clock::now();
@@ -145,7 +148,7 @@ void DemoDay::cv_snap()
 
   std::cout << std::endl << "OpenCV Framerate test " <<  count << std::endl << std::endl;
   std::cout << "End of OpenCV demo" << std::endl;
-
+  cap.release();
 }
 
 void DemoDay::sighthound(){
@@ -196,7 +199,7 @@ int DemoDay::cam_test()
   snapshot_test();
   std::cin.ignore();
 
-  
+
 
   std::cout << std::endl << "**** V4Pi RGB image format demo ****" << std::endl<< std::endl;
   jpeg_test->teardown();
@@ -223,14 +226,10 @@ int DemoDay::cam_test()
   std::cin.ignore();
   jpeg_test->teardown();
 
-  std::cout << std::endl << "**** Pure OpenCV implementation demo ****" << std::endl<< std::endl;
-  cv_snap();
-  std::cin.ignore();
-
   std::cout << std::endl << "**** V4Pi ALPR demo ****" << std::endl<< std::endl;
 
   factory = new V4l2Factory();
-  data_type = DataTypes::Enum::BGR;
+  data_type = DataTypes::Enum::YU12;
   address = "/dev/video0";
   jpeg_test = factory->init(address, width, height, data_type, framerate);
   jpeg_test->init();
@@ -250,18 +249,34 @@ int DemoDay::cam_test()
   }
   std::cout << "Framerate test " <<  count << " FPS" << std::endl;
 
+  std::cin.ignore();
+  jpeg_test->teardown();
+
+  std::cout << std::endl << "**** Pure OpenCV implementation demo ****" << std::endl<< std::endl;
+  cv_snap();
+  std::cin.ignore();
+
+
+
+
+
+  factory = new V4l2Factory();
+  data_type = DataTypes::Enum::BGR;
+  address = "/dev/video0";
+  jpeg_test = factory->init(address, width, height, data_type, framerate);
+  jpeg_test->init();
 
   std::cout << std::endl << "**** V4Pi Video demo ****" << std::endl<< std::endl;
   video_test();
 
   jpeg_test->teardown();
-
+  std::cin.ignore();
 
   std::cout << std::endl << "**** V4Pi sighthound demo ****" << std::endl<< std::endl;
   factory = new V4l2Factory();
   data_type = DataTypes::Enum::MJPEG;
   address = "/dev/video0";
-  jpeg_test = factory->init(address, width, height, data_type, framerate);
+  jpeg_test = factory->init(address, 1280, 720, data_type, 30);
   jpeg_test->init();
 
   sighthound();
