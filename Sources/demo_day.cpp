@@ -152,11 +152,12 @@ void DemoDay::cv_snap()
 }
 
 void DemoDay::sighthound(){
+  std::string key = "8nOVdHKtk2Pf7TnDIVRiLyTbdLsBFuth6mr4";
   std::cout << std::endl << "V4Pi Sighthound" << std::endl;
   begin = std::chrono::steady_clock::now();
 
   jpeg_test->save_jpeg("out.jpg");
-  jpeg_test->sighthound();
+  jpeg_test->sighthound(key.c_str());
   end = std::chrono::steady_clock::now();
   std::cout << std::endl << "V4Pi Sighthound time = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl <<std::endl;
 
@@ -165,7 +166,7 @@ void DemoDay::sighthound(){
   begin = std::chrono::steady_clock::now();
   frame = jpeg_test->get_cv_mat();
   imwrite("out.jpg", frame);
-  jpeg_test->sighthound();
+  jpeg_test->sighthound(key.c_str());
   end = std::chrono::steady_clock::now();
   std::cout << std::endl << "CV Sighthound time = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl <<std::endl;
 
@@ -278,6 +279,8 @@ int DemoDay::cam_test()
   address = "/dev/video0";
   jpeg_test = factory->init(address, 1280, 720, data_type, 30);
   jpeg_test->init();
+
+
 
   sighthound();
 

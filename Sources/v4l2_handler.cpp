@@ -85,6 +85,8 @@ void V4l2Handler::open_device(){
 }
 
 void V4l2Handler::get_device_cap(int fd){
+  struct v4l2_capability cap;
+  CLEAR(cap);
 
   if(ioctl(fd, VIDIOC_QUERYCAP, &cap) < 0){
       perror("VIDIOC_QUERYCAP");
@@ -97,6 +99,8 @@ void V4l2Handler::get_device_cap(int fd){
 }
 
 void V4l2Handler::set_format(){
+  struct v4l2_format format;
+  CLEAR(format);
   format.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
   switch(data_type) {
       case DataTypes::Enum::YU12  :
@@ -153,6 +157,10 @@ void V4l2Handler::set_v4l2_framerate()
 }
 
 void V4l2Handler::buffer_setup(){
+  struct v4l2_buffer bufferinfo;
+  struct v4l2_requestbuffers bufrequest;
+  CLEAR(bufferinfo);
+  CLEAR(bufrequest);
   bufrequest.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
   bufrequest.memory = V4L2_MEMORY_MMAP;
   bufrequest.count = 3;
@@ -284,7 +292,7 @@ bool V4l2Handler::snapshot()
           exit(EXIT_FAILURE);
     }
     fprintf(fout, "P6\n%d %d 255\n",
-          format.fmt.pix.width, format.fmt.pix.height);
+          get_width(), get_height());
     fwrite(buffers[buf.index].data, buf.bytesused, 1, fout);
     fclose(fout);
 
@@ -370,7 +378,7 @@ void V4l2Handler::teardown(){
   free(buffers);
 }
 
-void V4l2Handler::sighthound(){
+void V4l2Handler::sighthound(char const* key){
   struct curl_slist *headerlist=NULL;
   FILE *fd2 = fopen("out.jpg", "rb");
   struct stat file_info;
@@ -383,7 +391,9 @@ void V4l2Handler::sighthound(){
     /* First set the URL that is about to receive our POST. This URL can
        just as well be a https:// URL if that is what should receive the
        data. */
-    headerlist = curl_slist_append( headerlist, "X-Access-Token: 8nOVdHKtk2Pf7TnDIVRiLyTbdLsBFuth6mr4");
+    std::string temp("X-Access-Token: ");
+    temp.append(key);
+    headerlist = curl_slist_append( headerlist, temp.c_str());
     headerlist = curl_slist_append( headerlist, "Content-Type: application/octet-stream");
     curl_easy_setopt(curl, CURLOPT_HEADER, true);
     curl_easy_setopt(curl, CURLOPT_URL, "https://dev.sighthoundapi.com/v1/recognition?objectType=vehicle");
@@ -391,7 +401,6 @@ void V4l2Handler::sighthound(){
     curl_easy_setopt(curl, CURLOPT_POST, 1L);
     curl_easy_setopt(curl, CURLOPT_READDATA, fd2);
     curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, (curl_off_t)file_info.st_size);
-    //curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
 
 
     /* Perform the request, res will get the return code */
@@ -408,7 +417,7 @@ void V4l2Handler::sighthound(){
 curl_global_cleanup();
 }
 
-void V4l2Handler::sighthound_face(){
+void V4l2Handler::sighthound_face(char const* key){
   struct curl_slist *headerlist=NULL;
   FILE *fd2 = fopen("out.jpg", "rb");
   struct stat file_info;
@@ -421,7 +430,9 @@ void V4l2Handler::sighthound_face(){
     /* First set the URL that is about to receive our POST. This URL can
        just as well be a https:// URL if that is what should receive the
        data. */
-    headerlist = curl_slist_append( headerlist, "X-Access-Token: 8nOVdHKtk2Pf7TnDIVRiLyTbdLsBFuth6mr4");
+    std::string temp("X-Access-Token: ");
+    temp.append(key);
+    headerlist = curl_slist_append( headerlist, temp.c_str());
     headerlist = curl_slist_append( headerlist, "Content-Type: application/octet-stream");
     curl_easy_setopt(curl, CURLOPT_HEADER, true);
     curl_easy_setopt(curl, CURLOPT_URL, "https://dev.sighthoundapi.com/v1/image/imageId?objectId=id2&objectType=person&train=manual");

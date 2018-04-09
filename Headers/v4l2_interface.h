@@ -25,19 +25,19 @@ public:
   virtual int get_width() = 0;
   virtual void set_height(int height) = 0;
   virtual int get_height() = 0;
-  virtual void open_device() = 0;
-  virtual void get_device_cap(int fd) = 0;
-  virtual void set_format() = 0;
-  virtual void buffer_setup() = 0;
+  //virtual void open_device() = 0;
+  //virtual void get_device_cap(int fd) = 0;
+  //virtual void set_format() = 0;
+  //virtual void buffer_setup() = 0;
   virtual unsigned char *  get_buffer() = 0;
   virtual bool snapshot() = 0;
   virtual cv::Mat get_cv_mat() = 0;
   virtual bool save_jpeg(std::string save_location) = 0;
   virtual void init() = 0;
   virtual void teardown() = 0;
-  virtual void set_v4l2_framerate() = 0;
-  virtual void sighthound() = 0;
-  virtual void sighthound_face() = 0;
+  //virtual void set_v4l2_framerate() = 0;
+  virtual void sighthound(char const* key) = 0;
+  virtual void sighthound_face(char const* key) = 0;
 };
 
 

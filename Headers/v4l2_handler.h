@@ -5,7 +5,7 @@
 
 #include "v4l2_interface.h"
 #include "data_types_enum.h"
-#include <memory> // unique_ptr
+#include <memory>
 #include <assert.h>
 #include <iostream>
 #include <omp.h>
@@ -44,8 +44,8 @@ public:
   bool read_frame();
   bool snapshot();
   void set_v4l2_framerate();
-  void sighthound();
-  void sighthound_face();
+  void sighthound(char const* key);
+  void sighthound_face(char const* key);
 
 private:
   struct buffer {
@@ -58,10 +58,6 @@ private:
   int height;
   int framerate;
   int fd;
-  struct v4l2_capability cap;
-  struct v4l2_format format;
-  struct v4l2_requestbuffers bufrequest;
-  struct v4l2_buffer bufferinfo;
   struct buffer * buffers;
   int n_buffers;
   void* buffer_start;
