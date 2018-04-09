@@ -1,9 +1,12 @@
 #include "launcher.h"
 
-
+// Below command is needed to launch Pi Camera driver
 //sudo modprobe bcm2835-v4l2
-//sudo sshfs -o allow_other,default_permissions pi@192.168.1.101:/home/pi/FYP/ /mnt/raspberry/
 
+
+/*
+* Snapshot function to save ppm image
+*/
 void Launcher::snapshot_test()
 {
   std::cout << std::endl << "Snapshot test" << std::endl;
@@ -22,6 +25,9 @@ void Launcher::snapshot_test()
 
 }
 
+/*
+* Snapshot function when MJPEG format has been used
+*/
 void Launcher::jpeg_snapshot_test()
 {
   std::cout << std::endl << "Snapshot test" << std::endl;
@@ -39,6 +45,9 @@ void Launcher::jpeg_snapshot_test()
   std::cout << "CV Snapshot time = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl <<std::endl;
 }
 
+/*
+* Saves an avi video at 24 FPS
+*/
 void Launcher::video_test()
 {
   std::cout << std::endl << "Video test" << std::endl;
@@ -93,7 +102,6 @@ int Launcher::cam_test()
     if (data_type  == DataTypes::Enum::MJPEG)
       jpeg_snapshot_test();
 
-    //video_test();
 
     begin = std::chrono::steady_clock::now();
     int time_diff = 0, count = 0;
@@ -107,7 +115,9 @@ int Launcher::cam_test()
     }
     std::cout << "Framerate test " <<  count << " FPS" << std::endl;
 
-
+    /*
+    * Testing APLR calls with raw data
+    */
     int x = 0;
     std::cout << std::endl << "**** V4Pi ALPR demo ****" << std::endl<< std::endl;
     while(x < 5){
@@ -143,6 +153,10 @@ int Launcher::cam_test()
       std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
     }
     std::cin.ignore();
+
+    /*
+    * Testing APLR calls with Mat file
+    */
     x = 0;
     std::cout << std::endl << "**** V4Pi OpenCV ALPR demo ****" << std::endl<< std::endl;
     while(x < 5){

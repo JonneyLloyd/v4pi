@@ -1,8 +1,11 @@
 #include "demo_day.h"
 
-
+// Below command is needed to launch Pi Camera driver
 //sudo modprobe bcm2835-v4l2
-//sudo sshfs -o allow_other,default_permissions pi@192.168.1.101:/home/pi/FYP/ /mnt/raspberry/
+
+/*
+* Snapshot function to save ppm image
+*/
 void DemoDay::snapshot_test()
 {
   std::cout << std::endl << "Snapshot test" << std::endl;
@@ -22,6 +25,9 @@ void DemoDay::snapshot_test()
 
 }
 
+/*
+* Snapshot function when MJPEG format has been used
+*/
 void DemoDay::jpeg_snapshot_test()
 {
   std::cout << std::endl << "Snapshot test" << std::endl;
@@ -39,6 +45,9 @@ void DemoDay::jpeg_snapshot_test()
   std::cout << "CV Snapshot time = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl <<std::endl;
 }
 
+/*
+* Testing APLR calls with raw data
+*/
 void DemoDay::alpr(){
   int x = 0;
   std::cout << "Raw data " << std::endl;
@@ -75,6 +84,9 @@ void DemoDay::alpr(){
   }
 }
 
+/*
+* Saves an avi video at 24 FPS
+*/
 void DemoDay::video_test()
 {
   std::cout << std::endl << "Video test" << std::endl;
@@ -89,49 +101,30 @@ void DemoDay::video_test()
   std::cout << std::endl << "Video test complete" << std::endl;
 }
 
+/*
+* cv_snap tests a pute OpenCV implementation of snapshot
+*/
 void DemoDay::cv_snap()
 {
-    cv::VideoCapture cap(0);
-    if ( !cap.isOpened() )
-    {
-         std::cout << "Cannot open the web cam" << std::endl;
-         exit(0);
+  cv::VideoCapture cap(0);
+  if ( !cap.isOpened() )
+  {
+       std::cout << "Cannot open the web cam" << std::endl;
+       exit(0);
 
-    }
-    cv::Mat frame;
-    cap.set(CV_CAP_PROP_FRAME_WIDTH, width);
-    cap.set(CV_CAP_PROP_FRAME_HEIGHT, height);
-    compression_params.push_back(cv::IMWRITE_JPEG_QUALITY );
-    //cap >> frame; // get a new frame from camera
-    //imwrite("imageCV.jpg", frame, compression_params); //sanity check
-
-
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-    std::chrono::steady_clock::time_point end;
-
-    cap >> frame; // get a new frame from camera
-    imwrite("imageCV.jpg", frame, compression_params);
-
-    end= std::chrono::steady_clock::now();
-    std::cout << "**** Snapshot test, pure CV **** = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
-
-    std::cin.ignore();
-
-    /*
-    std::cout << "**** OpenCV APLR test ****" << std::endl  << std::endl;
-    int x = 0;
-
-    while(x < 5){
-    x++;
-    begin = std::chrono::steady_clock::now();
-    std::cout << "Loop start" << std::endl;
-    cap >> frame; // get a new frame from camera
-
-    alprJpeg.run(frame);
-    end= std::chrono::steady_clock::now();
-    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
   }
-*/
+  cv::Mat frame;
+  cap.set(CV_CAP_PROP_FRAME_WIDTH, width);
+  cap.set(CV_CAP_PROP_FRAME_HEIGHT, height);
+  compression_params.push_back(cv::IMWRITE_JPEG_QUALITY );
+
+  std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+  std::chrono::steady_clock::time_point end;
+  cap >> frame; // get a new frame from camera
+  imwrite("imageCV.jpg", frame, compression_params);
+  end= std::chrono::steady_clock::now();
+  std::cout << "**** Snapshot test, pure CV **** = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
+  std::cin.ignore();
 
 
   begin = std::chrono::steady_clock::now();
@@ -151,16 +144,18 @@ void DemoDay::cv_snap()
   cap.release();
 }
 
+/*
+* test sighthound
+* Internet connection and sighthound api access key required
+*/
 void DemoDay::sighthound(){
   std::string key = "8nOVdHKtk2Pf7TnDIVRiLyTbdLsBFuth6mr4";
   std::cout << std::endl << "V4Pi Sighthound" << std::endl;
   begin = std::chrono::steady_clock::now();
-
   jpeg_test->save_jpeg("out.jpg");
   jpeg_test->sighthound(key.c_str());
   end = std::chrono::steady_clock::now();
   std::cout << std::endl << "V4Pi Sighthound time = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl <<std::endl;
-
 
   std::cout << std::endl << "CV Sighthound" << std::endl;
   begin = std::chrono::steady_clock::now();
@@ -170,11 +165,9 @@ void DemoDay::sighthound(){
   end = std::chrono::steady_clock::now();
   std::cout << std::endl << "CV Sighthound time = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl <<std::endl;
 
-  //std::cin.ignore();
-  //jpeg_test->sighthound_face();
 }
 
-
+//main function
 int DemoDay::cam_test()
 {
   factory = new V4l2Factory();

@@ -123,8 +123,6 @@ void V4l2Handler::set_format(){
       format.fmt.pix.pixelformat = V4L2_PIX_FMT_BGR24;
       break;
 
-
-
       default :
       std::cout << "Unknown format! YU12 Formated selected "  << std::endl;
       format.fmt.pix.pixelformat = V4L2_PIX_FMT_YUV420;
@@ -146,7 +144,6 @@ void V4l2Handler::set_v4l2_framerate()
     CLEAR(parm);
 
     parm.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
-    //reversed due to driver issue
     parm.parm.capture.timeperframe.numerator = 1;
     parm.parm.capture.timeperframe.denominator = get_framerate();
 
@@ -175,7 +172,6 @@ void V4l2Handler::buffer_setup(){
   }
   for (n_buffers = 0; n_buffers < bufrequest.count; ++n_buffers) {
             struct v4l2_buffer buf;
-
             CLEAR(buf);
 
             bufferinfo.type        = V4L2_BUF_TYPE_VIDEO_CAPTURE;
@@ -237,7 +233,6 @@ bool V4l2Handler::read_frame()
 {
     struct v4l2_buffer buf;
     int i;
-
     CLEAR(buf);
 
     buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
@@ -257,13 +252,11 @@ bool V4l2Handler::read_frame()
                 perror("VIDIOC_DQBUF");
         }
     }
-
     assert(buf.index < n_buffers);
     output= (unsigned char *)buffers[buf.index].data;
 
     if (-1 == ioctl(fd, VIDIOC_QBUF, &buf))
         perror("VIDIOC_QBUF");
-
     return true;
 }
 
@@ -285,7 +278,6 @@ bool V4l2Handler::snapshot()
                 perror("VIDIOC_DQBUF");
         }
     }
-
     fout = fopen("out.ppm", "w");
     if (!fout) {
           perror("Cannot open image");
@@ -301,8 +293,6 @@ bool V4l2Handler::snapshot()
 
     return true;
 }
-
-
 
 void V4l2Handler::start_capturing()
 {
@@ -323,8 +313,6 @@ void V4l2Handler::start_capturing()
     type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
     if (-1 == ioctl(fd, VIDIOC_STREAMON, &type))
         perror("VIDIOC_STREAMON");
-
-
 }
 
 bool V4l2Handler::save_jpeg(std::string save_location)
@@ -350,7 +338,6 @@ bool V4l2Handler::save_jpeg(std::string save_location)
                 perror("VIDIOC_DQBUF");
         }
     }
-
     write(jpgfile, buffers[buf.index].data, buf.bytesused);
     close(jpgfile);
 
@@ -402,7 +389,6 @@ void V4l2Handler::sighthound(char const* key){
     curl_easy_setopt(curl, CURLOPT_READDATA, fd2);
     curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, (curl_off_t)file_info.st_size);
 
-
     /* Perform the request, res will get the return code */
     res = curl_easy_perform(curl);
     /* Check for errors */
@@ -440,7 +426,6 @@ void V4l2Handler::sighthound_face(char const* key){
     curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
     curl_easy_setopt(curl, CURLOPT_READDATA, fd2);
     curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, (curl_off_t)file_info.st_size);
-    //curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
 
 
     /* Perform the request, res will get the return code */

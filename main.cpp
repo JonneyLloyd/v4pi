@@ -4,6 +4,7 @@
 
 int main(int argc, char *argv[])
 {
+  //instantiate Launcher, LauncherCV or DemoDay here
     DemoDay l;
 
     l.cam_test();
