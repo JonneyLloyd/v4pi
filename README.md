@@ -45,6 +45,8 @@ Finally test the library with an image containing a licence plate:
 
 * make
 
+* sudo modprobe bcm2835-v4l2
+
 * ./ fyp
 
-This will build the demo_day.cpp file which contains every component of the framework in use. Note: you will need to insert your own Sighthound API token into the 'key' string in the sighthound function. See https://www.sighthound.com/ for details. This will only effect sighthound functionality i.e. Vehicle make/model recognition.
+This modprobe is for Raspberry Pi camera. This will build the demo_day.cpp file which contains every component of the framework in use. Note: you will need to insert your own Sighthound API token into the 'key' string in the sighthound function. See https://www.sighthound.com/ for details. This will only effect sighthound functionality i.e. Vehicle make/model recognition.
