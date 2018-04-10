@@ -1,6 +1,5 @@
 #include "launcher.h"
 
-// Below command is needed to launch Pi Camera driver
 //sudo modprobe bcm2835-v4l2
 
 
@@ -152,6 +151,7 @@ int Launcher::cam_test()
       end= std::chrono::steady_clock::now();
       std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() <<std::endl;
     }
+    std::cout << std::endl << "Press ENTER to continue" << std::endl;
     std::cin.ignore();
 
     /*

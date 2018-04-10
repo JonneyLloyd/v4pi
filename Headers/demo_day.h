@@ -27,7 +27,7 @@ private:
     int height = 480;
     int framerate = 60;
     V4l2Factory* factory;
-    V4l2Interface* jpeg_test;
+    V4l2Interface* v4pi;
     AlprJpeg alprJpeg;
     cv::Mat frame;
     std::vector<int> compression_params;
