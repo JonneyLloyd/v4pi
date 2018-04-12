@@ -37,9 +37,9 @@ Finally test the library with an image containing a licence plate:
 
 ### Setup project 
 
-* git clone git@gitlab.com:JonneyLloyd/FYP.git
+* git clone git@github.com:JonneyLloyd/v4pi.git
 
-* cd FYP/
+* cd v4pi/
 
 * cmake .
 
